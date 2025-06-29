@@ -1,9 +1,10 @@
 import React from "react";
+import DashboardLayout from "./components/ui/layout/DashboardLayout";
 
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <DashboardLayout />
     </div>
   );
 }
