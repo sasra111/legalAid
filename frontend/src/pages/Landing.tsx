@@ -156,42 +156,6 @@ export default function Landing() {
         }
       `}</style>
 
-      {/* Navbar */}
-      <header className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between border-b border-gray-200/50 bg-white/80 backdrop-blur-xl sticky top-0 z-20 shadow-sm transition-all duration-300">
-        <div className="flex items-center space-x-2 sm:space-x-3 group">
-          <div className="p-2 bg-blue-600 rounded-xl shadow-lg group-hover:shadow-blue-300/50 transition-all duration-300 animate-pulse-glow">
-            <Briefcase className="h-6 w-6 text-white" />
-          </div>
-          <span className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent relative">
-            LegalAid
-            <div className="absolute inset-0 shimmer-bg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-          </span>
-        </div>
-        <div className="space-x-1 sm:space-x-2 flex items-center">
-          <Button
-            variant="ghost"
-            className="hidden md:inline-block text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium transition-all duration-300 hover:scale-105"
-          >
-            Features
-          </Button>
-          <Button
-            variant="ghost"
-            className="hidden md:inline-block text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium transition-all duration-300 hover:scale-105"
-          >
-            Pricing
-          </Button>
-          <Button
-            variant="ghost"
-            className="hidden md:inline-block text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium transition-all duration-300 hover:scale-105"
-          >
-            Contact
-          </Button>
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl px-4 sm:px-6 hover:scale-105 animate-pulse-glow text-sm sm:text-base">
-            Get Started
-          </Button>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section
         ref={heroRef}
@@ -396,39 +360,6 @@ export default function Landing() {
           </Button>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="w-full py-8 sm:py-12 border-t border-gray-200 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-2xl sm:max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 px-2 sm:px-4">
-          <div className="text-gray-600 text-sm sm:text-base text-center sm:text-left">
-            &copy; {new Date().getFullYear()}{" "}
-            <span className="font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-              LegalAid
-            </span>
-            . All rights reserved.
-          </div>
-          <div className="flex gap-4 sm:gap-6">
-            <a
-              href="#features"
-              className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 text-sm sm:text-base"
-            >
-              Features
-            </a>
-            <a
-              href="#pricing"
-              className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 text-sm sm:text-base"
-            >
-              Pricing
-            </a>
-            <a
-              href="mailto:contact@legalaid.com"
-              className="text-gray-600 hover:text-blue-600 font-medium transition-colors duration-300 text-sm sm:text-base"
-            >
-              Contact
-            </a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
