@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import API from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from "@/components/ui/alert-dialog";
 
 interface Client {
   _id?: string;
@@ -24,6 +35,11 @@ const ClientManagement: React.FC = () => {
   const [editName, setEditName] = useState("");
   const [editEmail, setEditEmail] = useState("");
   const [editPassword, setEditPassword] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [confirmHold, setConfirmHold] = useState<{
+    id: string;
+    status: "active" | "hold";
+  } | null>(null);
 
   const fetchClients = async () => {
     setLoading(true);
@@ -240,30 +256,106 @@ const ClientManagement: React.FC = () => {
                       </div>
                     </div>
                   )}
-                  <Button
-                    size="sm"
-                    variant="destructive"
-                    onClick={() => handleDeleteClient(client._id!)}
-                  >
-                    Delete
-                  </Button>
-                  {client.status === "active" ? (
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      onClick={() => handleHoldClient(client._id!, "hold")}
-                    >
-                      Hold
-                    </Button>
-                  ) : (
-                    <Button
-                      size="sm"
-                      variant="default"
-                      onClick={() => handleHoldClient(client._id!, "active")}
-                    >
-                      Activate
-                    </Button>
-                  )}
+                  {/* Delete Confirmation Dialog */}
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() => setConfirmDeleteId(client._id!)}
+                      >
+                        Delete
+                      </Button>
+                    </AlertDialogTrigger>
+                    {confirmDeleteId === client._id && (
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>Delete Client</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Are you sure you want to delete this client? This
+                            action cannot be undone.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel
+                            onClick={() => setConfirmDeleteId(null)}
+                          >
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => {
+                              handleDeleteClient(client._id!);
+                              setConfirmDeleteId(null);
+                            }}
+                          >
+                            Yes, Delete
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    )}
+                  </AlertDialog>
+                  {/* Hold/Activate Confirmation Dialog */}
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      {client.status === "active" ? (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          onClick={() =>
+                            setConfirmHold({ id: client._id!, status: "hold" })
+                          }
+                        >
+                          Hold
+                        </Button>
+                      ) : (
+                        <Button
+                          size="sm"
+                          variant="default"
+                          onClick={() =>
+                            setConfirmHold({
+                              id: client._id!,
+                              status: "active",
+                            })
+                          }
+                        >
+                          Activate
+                        </Button>
+                      )}
+                    </AlertDialogTrigger>
+                    {confirmHold && confirmHold.id === client._id && (
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            {client.status === "active"
+                              ? "Hold Client"
+                              : "Activate Client"}
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            {client.status === "active"
+                              ? "Are you sure you want to put this client on hold?"
+                              : "Are you sure you want to activate this client?"}
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel
+                            onClick={() => setConfirmHold(null)}
+                          >
+                            Cancel
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => {
+                              handleHoldClient(client._id!, confirmHold.status);
+                              setConfirmHold(null);
+                            }}
+                          >
+                            {client.status === "active"
+                              ? "Yes, Hold"
+                              : "Yes, Activate"}
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    )}
+                  </AlertDialog>
                 </div>
               </li>
             ))}

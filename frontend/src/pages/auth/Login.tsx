@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Scale, Gavel } from "lucide-react";
 import { useAuthStore } from "@/store/authStore";
-import { useNotificationStore } from "@/store/notificationStore";
-import Notification from "@/components/ui/Notification";
+import { toast } from "sonner";
 import API from "@/lib/api";
 
 const Login = () => {
@@ -28,7 +27,6 @@ const Login = () => {
     }
   }, [user, token, navigate]);
 
-  const notify = useNotificationStore((s) => s.notify);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
@@ -36,14 +34,14 @@ const Login = () => {
       const res = await API.post("/auth/login", { email, password });
       const { token, user } = res.data;
       setUser(user, token); // Save to zustand and localStorage with session time
-      notify("Login successful!", "success");
+      toast.success("Login successful!");
       // Redirect based on role
       if (user.role === "admin") navigate("/admin");
       else if (user.role === "lawyer") navigate("/lawyer-dashboard/lawyer");
       else navigate("/client");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Login failed");
-      notify(err?.response?.data?.message || "Login failed", "error");
+      toast.error(err?.response?.data?.message || "Login failed");
     }
   };
 
@@ -70,14 +68,6 @@ const Login = () => {
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
-          {error && (
-            <Notification
-              message={error}
-              type="error"
-              onClose={() => setError("")}
-              className="mb-2 text-center animate-pulse"
-            />
-          )}
           <div className="fade-in-on-scroll">
             <label
               htmlFor="email"
@@ -157,6 +147,9 @@ const Login = () => {
               </button>
             </div>
           </div>
+          {error && (
+            <div className="text-red-600 text-sm text-center mt-2">{error}</div>
+          )}
           <Button
             type="submit"
             className="w-full text-base font-semibold transition-transform duration-300 hover:scale-105 hover:shadow-xl"
