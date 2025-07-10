@@ -4,8 +4,73 @@ const bcrypt = require("bcryptjs");
 // Get all clients (for lawyer)
 exports.getClients = async (req, res) => {
   try {
-    const clients = await User.find({ role: "client" }, "_id name email");
+    const clients = await User.find(
+      { role: "client" },
+      "_id name email status"
+    );
     res.json({ clients });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+// Edit a client (name, email, status)
+exports.editClient = async (req, res) => {
+  const { id } = req.params;
+  const { name, email, status } = req.body;
+  try {
+    const client = await User.findOneAndUpdate(
+      { _id: id, role: "client" },
+      { $set: { name, email, status } },
+      { new: true, runValidators: true }
+    );
+    if (!client) return res.status(404).json({ message: "Client not found" });
+    res.json({
+      client: {
+        _id: client._id,
+        name: client.name,
+        email: client.email,
+        status: client.status,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Delete a client
+exports.deleteClient = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const client = await User.findOneAndDelete({ _id: id, role: "client" });
+    if (!client) return res.status(404).json({ message: "Client not found" });
+    res.json({ message: "Client deleted" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// Hold/Unhold a client (set status)
+exports.holdClient = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body; // should be "hold" or "active"
+  if (!["hold", "active"].includes(status)) {
+    return res.status(400).json({ message: "Invalid status" });
+  }
+  try {
+    const client = await User.findOneAndUpdate(
+      { _id: id, role: "client" },
+      { $set: { status } },
+      { new: true }
+    );
+    if (!client) return res.status(404).json({ message: "Client not found" });
+    res.json({
+      client: {
+        _id: client._id,
+        name: client.name,
+        email: client.email,
+        status: client.status,
+      },
+    });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }

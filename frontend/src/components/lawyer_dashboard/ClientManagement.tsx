@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "@/lib/api";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface Client {
   _id?: string;
   name: string;
   email: string;
+  status?: "active" | "hold";
 }
 
 const ClientManagement: React.FC = () => {
@@ -46,8 +48,67 @@ const ClientManagement: React.FC = () => {
       setEmail("");
       setPassword("");
       setSuccess("Client added successfully");
+      toast.success("Client added successfully");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Failed to add client");
+      toast.error(err?.response?.data?.message || "Failed to add client");
+    }
+  };
+
+  // Edit client
+  const handleEditClient = async (id: string, updated: Partial<Client>) => {
+    setError("");
+    setSuccess("");
+    try {
+      const res = await API.put(`/clients/${id}`, updated);
+      setClients((prev) =>
+        prev.map((c) => (c._id === id ? { ...c, ...res.data.client } : c))
+      );
+      setSuccess("Client updated");
+      toast.success("Client updated");
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Failed to update client");
+      toast.error(err?.response?.data?.message || "Failed to update client");
+    }
+  };
+
+  // Delete client
+  const handleDeleteClient = async (id: string) => {
+    setError("");
+    setSuccess("");
+    try {
+      await API.delete(`/clients/${id}`);
+      setClients((prev) => prev.filter((c) => c._id !== id));
+      setSuccess("Client deleted");
+      toast.success("Client deleted");
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Failed to delete client");
+      toast.error(err?.response?.data?.message || "Failed to delete client");
+    }
+  };
+
+  // Hold/unhold client
+  const handleHoldClient = async (id: string, status: "active" | "hold") => {
+    setError("");
+    setSuccess("");
+    try {
+      const res = await API.patch(`/clients/${id}/hold`, { status });
+      setClients((prev) =>
+        prev.map((c) => (c._id === id ? { ...c, ...res.data.client } : c))
+      );
+      const msg = status === "hold" ? "Client put on hold" : "Client activated";
+      setSuccess(msg);
+      // Use toast.success for consistency and reliability
+      toast.success(msg, {
+        description:
+          status === "hold"
+            ? "This client is now on hold."
+            : "This client is now active.",
+        duration: 3500,
+      });
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Failed to update status");
+      toast.error(err?.response?.data?.message || "Failed to update status");
     }
   };
 
@@ -62,8 +123,7 @@ const ClientManagement: React.FC = () => {
       >
         Add New Client
       </Button>
-      {error && <div className="text-red-600 mb-2">{error}</div>}
-      {success && <div className="text-green-600 mb-2">{success}</div>}
+      {/* Notifications handled by sonner */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Existing Clients</h3>
         {loading ? (
@@ -73,14 +133,56 @@ const ClientManagement: React.FC = () => {
             {clients.map((client) => (
               <li
                 key={client._id || client.email}
-                className="py-2 flex flex-col md:flex-row md:items-center md:justify-between"
+                className="py-2 flex flex-col md:flex-row md:items-center md:justify-between gap-2"
               >
                 <span>
                   <span className="font-medium text-blue-700">
                     {client.name}
                   </span>{" "}
                   <span className="text-gray-500">({client.email})</span>
+                  {client.status === "hold" && (
+                    <span className="ml-2 px-2 py-0.5 text-xs bg-yellow-200 text-yellow-800 rounded">
+                      On Hold
+                    </span>
+                  )}
                 </span>
+                <div className="flex gap-2 mt-2 md:mt-0">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() =>
+                      handleEditClient(client._id!, {
+                        name: prompt("Edit name", client.name) || client.name,
+                      })
+                    }
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    onClick={() => handleDeleteClient(client._id!)}
+                  >
+                    Delete
+                  </Button>
+                  {client.status === "active" ? (
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => handleHoldClient(client._id!, "hold")}
+                    >
+                      Hold
+                    </Button>
+                  ) : (
+                    <Button
+                      size="sm"
+                      variant="default"
+                      onClick={() => handleHoldClient(client._id!, "active")}
+                    >
+                      Activate
+                    </Button>
+                  )}
+                </div>
               </li>
             ))}
             {clients.length === 0 && (
@@ -140,8 +242,7 @@ const ClientManagement: React.FC = () => {
                 Add Client
               </Button>
             </form>
-            {error && <div className="text-red-600 mt-2">{error}</div>}
-            {success && <div className="text-green-600 mt-2">{success}</div>}
+            {/* Notifications handled by sonner */}
           </div>
         </div>
       )}
