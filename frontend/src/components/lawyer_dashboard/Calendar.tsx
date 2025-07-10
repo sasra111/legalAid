@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import API from "@/lib/api";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import {
   ChevronLeft,
@@ -20,11 +22,18 @@ function getFirstDayOfWeek(year: number, month: number) {
 
 const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+interface Client {
+  _id: string;
+  name: string;
+  email: string;
+}
+
 interface Event {
   id: string;
   title: string;
   date: string; // YYYY-MM-DD
   description?: string;
+  clients?: Client[];
 }
 
 const initialEvents: Event[] = [
@@ -57,6 +66,26 @@ const Calendar: React.FC = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newEventTitle, setNewEventTitle] = useState("");
   const [newEventDesc, setNewEventDesc] = useState("");
+  const [allClients, setAllClients] = useState<Client[]>([]);
+  const [clientSearch, setClientSearch] = useState("");
+  const [selectedClients, setSelectedClients] = useState<Client[]>([]);
+  const [loadingClients, setLoadingClients] = useState(false);
+
+  useEffect(() => {
+    // Fetch all clients for assignment
+    const fetchClients = async () => {
+      setLoadingClients(true);
+      try {
+        const res = await API.get("/clients");
+        setAllClients(res.data.clients);
+      } catch (err) {
+        toast.error("Failed to fetch clients");
+      } finally {
+        setLoadingClients(false);
+      }
+    };
+    fetchClients();
+  }, []);
 
   const daysInMonth = getDaysInMonth(currentYear, currentMonth);
   const firstDayOfWeek = getFirstDayOfWeek(currentYear, currentMonth);
@@ -88,21 +117,27 @@ const Calendar: React.FC = () => {
 
   const eventsForDate = (date: string) => events.filter((e) => e.date === date);
 
-  const handleAddEvent = (e: React.FormEvent) => {
+  const handleAddEvent = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedDate || !newEventTitle) return;
-    setEvents((prev) => [
-      ...prev,
-      {
-        id: Date.now().toString(),
+    try {
+      // Backend: create event with assigned clients
+      const res = await API.post("/events", {
         title: newEventTitle,
         date: selectedDate,
         description: newEventDesc,
-      },
-    ]);
+        clientIds: selectedClients.map((c) => c._id),
+      });
+      setEvents((prev) => [...prev, res.data.event]);
+      toast.success("Event added successfully");
+    } catch (err: any) {
+      toast.error(err?.response?.data?.message || "Failed to add event");
+    }
     setShowAddModal(false);
     setNewEventTitle("");
     setNewEventDesc("");
+    setSelectedClients([]);
+    setClientSearch("");
   };
 
   return (
@@ -209,7 +244,9 @@ const Calendar: React.FC = () => {
             >
               &times;
             </button>
-            <h3 className="text-xl font-bold text-blue-700 mb-4">Add Event</h3>
+            <h3 className="text-xl font-bold text-blue-700 mb-4">
+              Add New Event
+            </h3>
             <form onSubmit={handleAddEvent} className="flex flex-col gap-3">
               <input
                 type="text"
@@ -224,8 +261,96 @@ const Calendar: React.FC = () => {
                 value={newEventDesc}
                 onChange={(e) => setNewEventDesc(e.target.value)}
                 className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                rows={3}
+                rows={2}
               />
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Assign Clients
+                </label>
+                <input
+                  type="text"
+                  placeholder="Search clients by name or email"
+                  value={clientSearch}
+                  onChange={(e) => setClientSearch(e.target.value)}
+                  className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none mb-2"
+                />
+                <div className="max-h-32 overflow-y-auto border rounded-md bg-gray-50">
+                  {loadingClients ? (
+                    <div className="p-2 text-gray-500">Loading...</div>
+                  ) : (
+                    allClients
+                      .filter(
+                        (c) =>
+                          c.name
+                            .toLowerCase()
+                            .includes(clientSearch.toLowerCase()) ||
+                          c.email
+                            .toLowerCase()
+                            .includes(clientSearch.toLowerCase())
+                      )
+                      .map((client) => (
+                        <div
+                          key={client._id}
+                          className={`flex items-center px-3 py-1 cursor-pointer hover:bg-blue-100 ${
+                            selectedClients.some((sc) => sc._id === client._id)
+                              ? "bg-blue-200"
+                              : ""
+                          }`}
+                          onClick={() => {
+                            if (
+                              selectedClients.some(
+                                (sc) => sc._id === client._id
+                              )
+                            ) {
+                              setSelectedClients((prev) =>
+                                prev.filter((sc) => sc._id !== client._id)
+                              );
+                            } else {
+                              setSelectedClients((prev) => [...prev, client]);
+                            }
+                          }}
+                        >
+                          <span className="font-medium text-blue-700 mr-2">
+                            {client.name}
+                          </span>
+                          <span className="text-xs text-gray-500">
+                            ({client.email})
+                          </span>
+                          {selectedClients.some(
+                            (sc) => sc._id === client._id
+                          ) && (
+                            <span className="ml-auto text-green-600 font-bold">
+                              ✓
+                            </span>
+                          )}
+                        </div>
+                      ))
+                  )}
+                </div>
+                {selectedClients.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {selectedClients.map((client) => (
+                      <span
+                        key={client._id}
+                        className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs flex items-center gap-1"
+                      >
+                        {client.name}
+                        <button
+                          type="button"
+                          className="ml-1 text-red-500 hover:text-red-700"
+                          onClick={() =>
+                            setSelectedClients((prev) =>
+                              prev.filter((c) => c._id !== client._id)
+                            )
+                          }
+                        >
+                          ×
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
               <Button type="submit" className="px-6 py-2">
                 Add Event
               </Button>
