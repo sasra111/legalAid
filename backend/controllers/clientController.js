@@ -13,14 +13,20 @@ exports.getClients = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-// Edit a client (name, email, status)
+// Edit a client (name, email, password, status)
 exports.editClient = async (req, res) => {
   const { id } = req.params;
-  const { name, email, status } = req.body;
+  const { name, email, password, status } = req.body;
   try {
+    const updateFields = { name, email };
+    if (typeof status !== "undefined") updateFields.status = status;
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      updateFields.password = hashedPassword;
+    }
     const client = await User.findOneAndUpdate(
       { _id: id, role: "client" },
-      { $set: { name, email, status } },
+      { $set: updateFields },
       { new: true, runValidators: true }
     );
     if (!client) return res.status(404).json({ message: "Client not found" });

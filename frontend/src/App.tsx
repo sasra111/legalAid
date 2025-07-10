@@ -9,6 +9,7 @@ import FeaturesGrid from "@/components/lawyer_dashboard/FeaturesGrid";
 import CaseOverview from "@/components/lawyer_dashboard/CaseOverview";
 import BillingSummary from "@/components/lawyer_dashboard/BillingSummary";
 import UpcomingEvents from "@/components/lawyer_dashboard/UpcomingEvents";
+import Calendar from "./components/lawyer_dashboard/Calendar";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 function App() {
@@ -73,7 +74,9 @@ function App() {
             <Route
               path="calendar"
               element={
-                <div className="text-xl">Calendar Section (Coming soon)</div>
+                <ProtectedRoute allowedRoles={["lawyer"]}>
+                  <Calendar />
+                </ProtectedRoute>
               }
             />
             <Route path="billing" element={<BillingSummary />} />
