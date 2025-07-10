@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import Login from "./pages/auth/Login";
 import Layout from "@/components/layout/Layout";
-import LawyerDashboard from "./pages/firm_dashboard/LawyerDashboard";
-import FeaturesGrid from "@/components/firm_dashboard/FeaturesGrid";
-import CaseOverview from "@/components/firm_dashboard/CaseOverview";
-import BillingSummary from "@/components/firm_dashboard/BillingSummary";
-import UpcomingEvents from "@/components/firm_dashboard/UpcomingEvents";
+import LawyerDashboard from "./pages/lawyer/LawyerDashboard";
+import FeaturesGrid from "@/components/lawyer_dashboard/FeaturesGrid";
+import CaseOverview from "@/components/lawyer_dashboard/CaseOverview";
+import BillingSummary from "@/components/lawyer_dashboard/BillingSummary";
+import UpcomingEvents from "@/components/lawyer_dashboard/UpcomingEvents";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/firm-dashboard/lawyer"
+            path="/lawyer-dashboard/lawyer"
             element={
               <ProtectedRoute allowedRoles={["lawyer"]}>
                 <LawyerDashboard />

@@ -21,7 +21,7 @@ const Login = () => {
     if (user && token) {
       if (user.role === "admin") navigate("/admin", { replace: true });
       else if (user.role === "lawyer")
-        navigate("/firm-dashboard/lawyer", { replace: true });
+        navigate("/lawyer-dashboard/lawyer", { replace: true });
       else navigate("/client", { replace: true });
     }
   }, [user, token, navigate]);
@@ -35,7 +35,7 @@ const Login = () => {
       setUser(user, token); // Save to zustand and localStorage with session time
       // Redirect based on role
       if (user.role === "admin") navigate("/admin");
-      else if (user.role === "lawyer") navigate("/firm-dashboard/lawyer");
+      else if (user.role === "lawyer") navigate("/lawyer-dashboard/lawyer");
       else navigate("/client");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Login failed");
