@@ -10,6 +10,7 @@ const UserSchema = new mongoose.Schema(
       default: "client",
     },
     name: { type: String },
+    username: { type: String, unique: true, sparse: true },
   },
   { timestamps: true }
 );
