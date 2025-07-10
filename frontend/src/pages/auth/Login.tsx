@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Scale, Gavel } from "lucide-react";
@@ -13,9 +13,18 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const setUser = useAuthStore(
-    (state: { setUser: (user: any, token: string) => void }) => state.setUser
-  );
+  const setUser = useAuthStore((state) => state.setUser);
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+
+  useEffect(() => {
+    if (user && token) {
+      if (user.role === "admin") navigate("/admin", { replace: true });
+      else if (user.role === "lawyer")
+        navigate("/firm-dashboard/lawyer", { replace: true });
+      else navigate("/client", { replace: true });
+    }
+  }, [user, token, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,7 +35,7 @@ const Login = () => {
       setUser(user, token); // Save to zustand and localStorage with session time
       // Redirect based on role
       if (user.role === "admin") navigate("/admin");
-      else if (user.role === "lawyer") navigate("/firm_dashboard/lawyer");
+      else if (user.role === "lawyer") navigate("/firm-dashboard/lawyer");
       else navigate("/client");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Login failed");
