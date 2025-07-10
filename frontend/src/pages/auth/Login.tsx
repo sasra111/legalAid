@@ -1,15 +1,32 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Scale, Gavel } from "lucide-react";
+import API from "@/lib/api";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
+    setError("");
+    try {
+      const res = await API.post("/auth/login", { email, password });
+      const { token, user } = res.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      // Redirect based on role
+      if (user.role === "admin") navigate("/admin");
+      else if (user.role === "lawyer") navigate("/lawyer");
+      else navigate("/client");
+    } catch (err: any) {
+      setError(err?.response?.data?.message || "Login failed");
+    }
   };
 
   return (
@@ -35,6 +52,11 @@ const Login = () => {
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
+          {error && (
+            <div className="text-red-600 text-center font-semibold animate-pulse">
+              {error}
+            </div>
+          )}
           <div className="fade-in-on-scroll">
             <label
               htmlFor="email"
