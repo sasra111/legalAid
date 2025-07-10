@@ -9,6 +9,14 @@ import {
   Plus,
 } from "lucide-react";
 import clsx from "clsx";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 // Helper to get days in month
 function getDaysInMonth(year: number, month: number) {
@@ -202,14 +210,135 @@ const Calendar: React.FC = () => {
             <h3 className="text-lg font-semibold text-blue-700">
               Events for {selectedDate}
             </h3>
-            <Button
-              size="sm"
-              variant="outline"
-              onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-1"
-            >
-              <Plus className="h-4 w-4" /> Add Event
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="flex items-center gap-1"
+                >
+                  <Plus className="h-4 w-4" /> Add Event
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Add New Event</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleAddEvent} className="flex flex-col gap-3">
+                  <input
+                    type="text"
+                    placeholder="Event Title"
+                    value={newEventTitle}
+                    onChange={(e) => setNewEventTitle(e.target.value)}
+                    className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    required
+                  />
+                  <textarea
+                    placeholder="Event Description (optional)"
+                    value={newEventDesc}
+                    onChange={(e) => setNewEventDesc(e.target.value)}
+                    className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                    rows={2}
+                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Assign Clients
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Search clients by name or email"
+                      value={clientSearch}
+                      onChange={(e) => setClientSearch(e.target.value)}
+                      className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none mb-2"
+                    />
+                    <div className="max-h-32 overflow-y-auto border rounded-md bg-gray-50">
+                      {loadingClients ? (
+                        <div className="p-2 text-gray-500">Loading...</div>
+                      ) : (
+                        allClients
+                          .filter(
+                            (c) =>
+                              c.name
+                                .toLowerCase()
+                                .includes(clientSearch.toLowerCase()) ||
+                              c.email
+                                .toLowerCase()
+                                .includes(clientSearch.toLowerCase())
+                          )
+                          .map((client) => (
+                            <div
+                              key={client._id}
+                              className={`flex items-center px-3 py-1 cursor-pointer hover:bg-blue-100 ${
+                                selectedClients.some(
+                                  (sc) => sc._id === client._id
+                                )
+                                  ? "bg-blue-200"
+                                  : ""
+                              }`}
+                              onClick={() => {
+                                if (
+                                  selectedClients.some(
+                                    (sc) => sc._id === client._id
+                                  )
+                                ) {
+                                  setSelectedClients((prev) =>
+                                    prev.filter((sc) => sc._id !== client._id)
+                                  );
+                                } else {
+                                  setSelectedClients((prev) => [
+                                    ...prev,
+                                    client,
+                                  ]);
+                                }
+                              }}
+                            >
+                              <span className="font-medium text-blue-700 mr-2">
+                                {client.name}
+                              </span>
+                              <span className="text-xs text-gray-500">
+                                ({client.email})
+                              </span>
+                              {selectedClients.some(
+                                (sc) => sc._id === client._id
+                              ) && (
+                                <span className="ml-auto text-green-600 font-bold">
+                                  ✓
+                                </span>
+                              )}
+                            </div>
+                          ))
+                      )}
+                    </div>
+                    {selectedClients.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {selectedClients.map((client) => (
+                          <span
+                            key={client._id}
+                            className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs flex items-center gap-1"
+                          >
+                            {client.name}
+                            <button
+                              type="button"
+                              className="ml-1 text-red-500 hover:text-red-700"
+                              onClick={() =>
+                                setSelectedClients((prev) =>
+                                  prev.filter((c) => c._id !== client._id)
+                                )
+                              }
+                            >
+                              ×
+                            </button>
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <Button type="submit" className="px-6 py-2">
+                    Add Event
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
           <ul className="space-y-2">
             {eventsForDate(selectedDate).length === 0 && (
@@ -231,131 +360,6 @@ const Calendar: React.FC = () => {
               </li>
             ))}
           </ul>
-        </div>
-      )}
-      {/* Add Event Modal */}
-      {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-          <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative animate-fade-in-up">
-            <button
-              className="absolute top-2 right-2 text-gray-400 hover:text-blue-600 text-2xl font-bold focus:outline-none"
-              onClick={() => setShowAddModal(false)}
-              aria-label="Close"
-            >
-              &times;
-            </button>
-            <h3 className="text-xl font-bold text-blue-700 mb-4">
-              Add New Event
-            </h3>
-            <form onSubmit={handleAddEvent} className="flex flex-col gap-3">
-              <input
-                type="text"
-                placeholder="Event Title"
-                value={newEventTitle}
-                onChange={(e) => setNewEventTitle(e.target.value)}
-                className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                required
-              />
-              <textarea
-                placeholder="Event Description (optional)"
-                value={newEventDesc}
-                onChange={(e) => setNewEventDesc(e.target.value)}
-                className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                rows={2}
-              />
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Assign Clients
-                </label>
-                <input
-                  type="text"
-                  placeholder="Search clients by name or email"
-                  value={clientSearch}
-                  onChange={(e) => setClientSearch(e.target.value)}
-                  className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none mb-2"
-                />
-                <div className="max-h-32 overflow-y-auto border rounded-md bg-gray-50">
-                  {loadingClients ? (
-                    <div className="p-2 text-gray-500">Loading...</div>
-                  ) : (
-                    allClients
-                      .filter(
-                        (c) =>
-                          c.name
-                            .toLowerCase()
-                            .includes(clientSearch.toLowerCase()) ||
-                          c.email
-                            .toLowerCase()
-                            .includes(clientSearch.toLowerCase())
-                      )
-                      .map((client) => (
-                        <div
-                          key={client._id}
-                          className={`flex items-center px-3 py-1 cursor-pointer hover:bg-blue-100 ${
-                            selectedClients.some((sc) => sc._id === client._id)
-                              ? "bg-blue-200"
-                              : ""
-                          }`}
-                          onClick={() => {
-                            if (
-                              selectedClients.some(
-                                (sc) => sc._id === client._id
-                              )
-                            ) {
-                              setSelectedClients((prev) =>
-                                prev.filter((sc) => sc._id !== client._id)
-                              );
-                            } else {
-                              setSelectedClients((prev) => [...prev, client]);
-                            }
-                          }}
-                        >
-                          <span className="font-medium text-blue-700 mr-2">
-                            {client.name}
-                          </span>
-                          <span className="text-xs text-gray-500">
-                            ({client.email})
-                          </span>
-                          {selectedClients.some(
-                            (sc) => sc._id === client._id
-                          ) && (
-                            <span className="ml-auto text-green-600 font-bold">
-                              ✓
-                            </span>
-                          )}
-                        </div>
-                      ))
-                  )}
-                </div>
-                {selectedClients.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {selectedClients.map((client) => (
-                      <span
-                        key={client._id}
-                        className="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs flex items-center gap-1"
-                      >
-                        {client.name}
-                        <button
-                          type="button"
-                          className="ml-1 text-red-500 hover:text-red-700"
-                          onClick={() =>
-                            setSelectedClients((prev) =>
-                              prev.filter((c) => c._id !== client._id)
-                            )
-                          }
-                        >
-                          ×
-                        </button>
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-              <Button type="submit" className="px-6 py-2">
-                Add Event
-              </Button>
-            </form>
-          </div>
         </div>
       )}
     </div>
