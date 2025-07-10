@@ -4,6 +4,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/auth/Login";
 import Layout from "@/components/layout/Layout";
 import LawyerDashboard from "./pages/lawyer/LawyerDashboard";
+import ClientManagement from "@/components/lawyer_dashboard/ClientManagement";
 import FeaturesGrid from "@/components/lawyer_dashboard/FeaturesGrid";
 import CaseOverview from "@/components/lawyer_dashboard/CaseOverview";
 import BillingSummary from "@/components/lawyer_dashboard/BillingSummary";
@@ -64,7 +65,9 @@ function App() {
             <Route
               path="clients"
               element={
-                <div className="text-xl">Clients Section (Coming soon)</div>
+                <ProtectedRoute allowedRoles={["lawyer"]}>
+                  <ClientManagement />
+                </ProtectedRoute>
               }
             />
             <Route

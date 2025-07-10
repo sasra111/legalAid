@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import { DollarSign } from "lucide-react";
 
 const BillingSummary = () => (
