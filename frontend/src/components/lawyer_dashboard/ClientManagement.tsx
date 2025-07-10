@@ -19,6 +19,11 @@ const ClientManagement: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editClient, setEditClient] = useState<Client | null>(null);
+  const [editName, setEditName] = useState("");
+  const [editEmail, setEditEmail] = useState("");
+  const [editPassword, setEditPassword] = useState("");
 
   const fetchClients = async () => {
     setLoading(true);
@@ -56,16 +61,35 @@ const ClientManagement: React.FC = () => {
   };
 
   // Edit client
-  const handleEditClient = async (id: string, updated: Partial<Client>) => {
+  const openEditModal = (client: Client) => {
+    setEditClient(client);
+    setEditName(client.name);
+    setEditEmail(client.email);
+    setEditPassword("");
+    setShowEditModal(true);
+  };
+
+  const handleEditClient = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editClient) return;
     setError("");
     setSuccess("");
     try {
-      const res = await API.put(`/clients/${id}`, updated);
+      const payload: any = { name: editName, email: editEmail };
+      if (editPassword) payload.password = editPassword;
+      const res = await API.put(`/clients/${editClient._id}`, payload);
       setClients((prev) =>
-        prev.map((c) => (c._id === id ? { ...c, ...res.data.client } : c))
+        prev.map((c) =>
+          c._id === editClient._id ? { ...c, ...res.data.client } : c
+        )
       );
       setSuccess("Client updated");
       toast.success("Client updated");
+      setShowEditModal(false);
+      setEditClient(null);
+      setEditName("");
+      setEditEmail("");
+      setEditPassword("");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Failed to update client");
       toast.error(err?.response?.data?.message || "Failed to update client");
@@ -150,14 +174,72 @@ const ClientManagement: React.FC = () => {
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={() =>
-                      handleEditClient(client._id!, {
-                        name: prompt("Edit name", client.name) || client.name,
-                      })
-                    }
+                    onClick={() => openEditModal(client)}
                   >
                     Edit
                   </Button>
+                  {/* Modal for editing client */}
+                  {showEditModal && editClient && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
+                      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative animate-fade-in-up">
+                        <button
+                          className="absolute top-2 right-2 text-gray-400 hover:text-blue-600 text-2xl font-bold focus:outline-none"
+                          onClick={() => {
+                            setShowEditModal(false);
+                            setEditClient(null);
+                            setEditName("");
+                            setEditEmail("");
+                            setEditPassword("");
+                            setError("");
+                            setSuccess("");
+                          }}
+                          aria-label="Close"
+                        >
+                          &times;
+                        </button>
+                        <h3 className="text-xl font-bold text-blue-700 mb-4">
+                          Edit Client
+                        </h3>
+                        <form
+                          onSubmit={handleEditClient}
+                          className="flex flex-col gap-3"
+                        >
+                          <input
+                            type="text"
+                            placeholder="Client Name"
+                            value={editName}
+                            onChange={(e) => setEditName(e.target.value)}
+                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                            required
+                          />
+                          <input
+                            type="email"
+                            placeholder="Client Email"
+                            value={editEmail}
+                            onChange={(e) => setEditEmail(e.target.value)}
+                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                            required
+                          />
+                          <input
+                            type="password"
+                            placeholder="New Password (leave blank to keep current)"
+                            value={editPassword}
+                            onChange={(e) => setEditPassword(e.target.value)}
+                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          />
+                          <Button type="submit" className="px-6 py-2">
+                            Update Client
+                          </Button>
+                        </form>
+                        {error && (
+                          <div className="text-red-600 mt-2">{error}</div>
+                        )}
+                        {success && (
+                          <div className="text-green-600 mt-2">{success}</div>
+                        )}
+                      </div>
+                    </div>
+                  )}
                   <Button
                     size="sm"
                     variant="destructive"
