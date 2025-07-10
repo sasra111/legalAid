@@ -15,7 +15,9 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
-app.use("/api/auth", require("./routes/auth"));
+
+app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/clients", require("./routes/clientRoutes"));
 
 app.get("/", (req, res) => {
   res.send("Backend is running");

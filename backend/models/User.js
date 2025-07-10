@@ -11,6 +11,11 @@ const UserSchema = new mongoose.Schema(
     },
     name: { type: String },
     username: { type: String, unique: true, sparse: true },
+    status: {
+      type: String,
+      enum: ["active", "hold"],
+      default: "active",
+    },
   },
   { timestamps: true }
 );

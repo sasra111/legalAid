@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Scale, Gavel } from "lucide-react";
+import { useAuthStore } from "@/store/authStore";
+import { useNotificationStore } from "@/store/notificationStore";
+import Notification from "@/components/ui/Notification";
 import API from "@/lib/api";
 
 const Login = () => {
@@ -12,20 +15,35 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+  const setUser = useAuthStore((state) => state.setUser);
+  const user = useAuthStore((state) => state.user);
+  const token = useAuthStore((state) => state.token);
+
+  useEffect(() => {
+    if (user && token) {
+      if (user.role === "admin") navigate("/admin", { replace: true });
+      else if (user.role === "lawyer")
+        navigate("/lawyer-dashboard/lawyer", { replace: true });
+      else navigate("/client", { replace: true });
+    }
+  }, [user, token, navigate]);
+
+  const notify = useNotificationStore((s) => s.notify);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     try {
       const res = await API.post("/auth/login", { email, password });
       const { token, user } = res.data;
-      localStorage.setItem("token", token);
-      localStorage.setItem("user", JSON.stringify(user));
+      setUser(user, token); // Save to zustand and localStorage with session time
+      notify("Login successful!", "success");
       // Redirect based on role
       if (user.role === "admin") navigate("/admin");
-      else if (user.role === "lawyer") navigate("/lawyer");
+      else if (user.role === "lawyer") navigate("/lawyer-dashboard/lawyer");
       else navigate("/client");
     } catch (err: any) {
       setError(err?.response?.data?.message || "Login failed");
+      notify(err?.response?.data?.message || "Login failed", "error");
     }
   };
 
@@ -53,9 +71,12 @@ const Login = () => {
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="text-red-600 text-center font-semibold animate-pulse">
-              {error}
-            </div>
+            <Notification
+              message={error}
+              type="error"
+              onClose={() => setError("")}
+              className="mb-2 text-center animate-pulse"
+            />
           )}
           <div className="fade-in-on-scroll">
             <label
