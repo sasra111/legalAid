@@ -1,3 +1,4 @@
+import Settings from "@/components/lawyer_dashboard/Settings";
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
@@ -83,7 +84,9 @@ function App() {
             <Route
               path="settings"
               element={
-                <div className="text-xl">Settings Section (Coming soon)</div>
+                <ProtectedRoute allowedRoles={["lawyer"]}>
+                  <Settings />
+                </ProtectedRoute>
               }
             />
           </Route>
