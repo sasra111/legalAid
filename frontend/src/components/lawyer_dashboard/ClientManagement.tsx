@@ -3,6 +3,16 @@ import API from "@/lib/api";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+  DialogClose,
+} from "@/components/ui/dialog";
+import {
   AlertDialog,
   AlertDialogTrigger,
   AlertDialogContent,
@@ -157,12 +167,50 @@ const ClientManagement: React.FC = () => {
       <h2 className="text-2xl font-bold text-blue-800 mb-4">
         Client Management
       </h2>
-      <Button
-        onClick={() => setShowAddModal(true)}
-        className="mb-4 w-fit px-6 py-2"
-      >
-        Add New Client
-      </Button>
+      <Dialog open={showAddModal} onOpenChange={setShowAddModal}>
+        <DialogTrigger asChild>
+          <Button className="mb-4 w-fit px-6 py-2">Add New Client</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Add New Client</DialogTitle>
+            <DialogDescription>
+              Fill in the details to add a new client to the platform.
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleAddClient} className="flex flex-col gap-3 mt-2">
+            <input
+              type="text"
+              placeholder="Client Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              required
+            />
+            <input
+              type="email"
+              placeholder="Client Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              required
+            />
+            <input
+              type="password"
+              placeholder="Client Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+              required
+            />
+            <DialogFooter>
+              <Button type="submit" className="px-6 py-2">
+                Add Client
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
       {/* Notifications handled by sonner */}
       <div>
         <h3 className="text-lg font-semibold mb-2">Existing Clients</h3>
@@ -195,67 +243,69 @@ const ClientManagement: React.FC = () => {
                     Edit
                   </Button>
                   {/* Modal for editing client */}
-                  {showEditModal && editClient && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-                      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md relative animate-fade-in-up">
-                        <button
-                          className="absolute top-2 right-2 text-gray-400 hover:text-blue-600 text-2xl font-bold focus:outline-none"
-                          onClick={() => {
-                            setShowEditModal(false);
-                            setEditClient(null);
-                            setEditName("");
-                            setEditEmail("");
-                            setEditPassword("");
-                            setError("");
-                            setSuccess("");
-                          }}
-                          aria-label="Close"
-                        >
-                          &times;
-                        </button>
-                        <h3 className="text-xl font-bold text-blue-700 mb-4">
-                          Edit Client
-                        </h3>
-                        <form
-                          onSubmit={handleEditClient}
-                          className="flex flex-col gap-3"
-                        >
-                          <input
-                            type="text"
-                            placeholder="Client Name"
-                            value={editName}
-                            onChange={(e) => setEditName(e.target.value)}
-                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                            required
-                          />
-                          <input
-                            type="email"
-                            placeholder="Client Email"
-                            value={editEmail}
-                            onChange={(e) => setEditEmail(e.target.value)}
-                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                            required
-                          />
-                          <input
-                            type="password"
-                            placeholder="New Password (leave blank to keep current)"
-                            value={editPassword}
-                            onChange={(e) => setEditPassword(e.target.value)}
-                            className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-                          />
+                  <Dialog
+                    open={showEditModal && !!editClient}
+                    onOpenChange={(open) => {
+                      setShowEditModal(open);
+                      if (!open) {
+                        setEditClient(null);
+                        setEditName("");
+                        setEditEmail("");
+                        setEditPassword("");
+                        setError("");
+                        setSuccess("");
+                      }
+                    }}
+                  >
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Edit Client</DialogTitle>
+                        <DialogDescription>
+                          Update client details below. Leave password blank to
+                          keep current password.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form
+                        onSubmit={handleEditClient}
+                        className="flex flex-col gap-3 mt-2"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Client Name"
+                          value={editName}
+                          onChange={(e) => setEditName(e.target.value)}
+                          className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          required
+                        />
+                        <input
+                          type="email"
+                          placeholder="Client Email"
+                          value={editEmail}
+                          onChange={(e) => setEditEmail(e.target.value)}
+                          className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                          required
+                        />
+                        <input
+                          type="password"
+                          placeholder="New Password (leave blank to keep current)"
+                          value={editPassword}
+                          onChange={(e) => setEditPassword(e.target.value)}
+                          className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                        />
+                        <DialogFooter>
                           <Button type="submit" className="px-6 py-2">
                             Update Client
                           </Button>
-                        </form>
-                        {error && (
-                          <div className="text-red-600 mt-2">{error}</div>
-                        )}
-                        {success && (
-                          <div className="text-green-600 mt-2">{success}</div>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                        </DialogFooter>
+                      </form>
+                      {error && (
+                        <div className="text-red-600 mt-2">{error}</div>
+                      )}
+                      {success && (
+                        <div className="text-green-600 mt-2">{success}</div>
+                      )}
+                    </DialogContent>
+                  </Dialog>
                   {/* Delete Confirmation Dialog */}
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
