@@ -17,6 +17,18 @@ import {
   DialogTitle,
   DialogClose,
 } from "@/components/ui/dialog";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
+import {
+  Command,
+  CommandInput,
+  CommandList,
+  CommandItem,
+  CommandEmpty,
+} from "@/components/ui/command";
 
 // Helper to get days in month
 function getDaysInMonth(year: number, month: number) {
@@ -78,6 +90,7 @@ const Calendar: React.FC = () => {
   const [clientSearch, setClientSearch] = useState("");
   const [selectedClients, setSelectedClients] = useState<Client[]>([]);
   const [loadingClients, setLoadingClients] = useState(false);
+  const [addDialogOpen, setAddDialogOpen] = useState(false);
 
   useEffect(() => {
     // Fetch all clients for assignment
@@ -93,6 +106,17 @@ const Calendar: React.FC = () => {
       }
     };
     fetchClients();
+
+    // Fetch events for the logged-in lawyer
+    const fetchEvents = async () => {
+      try {
+        const res = await API.get("/events");
+        setEvents(res.data.events);
+      } catch (err) {
+        toast.error("Failed to fetch events");
+      }
+    };
+    fetchEvents();
   }, []);
 
   const daysInMonth = getDaysInMonth(currentYear, currentMonth);
@@ -130,18 +154,20 @@ const Calendar: React.FC = () => {
     if (!selectedDate || !newEventTitle) return;
     try {
       // Backend: create event with assigned clients
-      const res = await API.post("/events", {
+      await API.post("/events", {
         title: newEventTitle,
         date: selectedDate,
         description: newEventDesc,
         clientIds: selectedClients.map((c) => c._id),
       });
-      setEvents((prev) => [...prev, res.data.event]);
+      // Refetch events after adding
+      const eventsRes = await API.get("/events");
+      setEvents(eventsRes.data.events);
       toast.success("Event added successfully");
+      setAddDialogOpen(false); // Close the dialog
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Failed to add event");
     }
-    setShowAddModal(false);
     setNewEventTitle("");
     setNewEventDesc("");
     setSelectedClients([]);
@@ -210,12 +236,13 @@ const Calendar: React.FC = () => {
             <h3 className="text-lg font-semibold text-blue-700">
               Events for {selectedDate}
             </h3>
-            <Dialog>
+            <Dialog open={addDialogOpen} onOpenChange={setAddDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   size="sm"
                   variant="outline"
                   className="flex items-center gap-1"
+                  onClick={() => setAddDialogOpen(true)}
                 >
                   <Plus className="h-4 w-4" /> Add Event
                 </Button>
@@ -244,71 +271,93 @@ const Calendar: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Assign Clients
                     </label>
-                    <input
-                      type="text"
-                      placeholder="Search clients by name or email"
-                      value={clientSearch}
-                      onChange={(e) => setClientSearch(e.target.value)}
-                      className="border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500 outline-none mb-2"
-                    />
-                    <div className="max-h-32 overflow-y-auto border rounded-md bg-gray-50">
-                      {loadingClients ? (
-                        <div className="p-2 text-gray-500">Loading...</div>
-                      ) : (
-                        allClients
-                          .filter(
-                            (c) =>
-                              c.name
-                                .toLowerCase()
-                                .includes(clientSearch.toLowerCase()) ||
-                              c.email
-                                .toLowerCase()
-                                .includes(clientSearch.toLowerCase())
-                          )
-                          .map((client) => (
-                            <div
-                              key={client._id}
-                              className={`flex items-center px-3 py-1 cursor-pointer hover:bg-blue-100 ${
-                                selectedClients.some(
-                                  (sc) => sc._id === client._id
-                                )
-                                  ? "bg-blue-200"
-                                  : ""
-                              }`}
-                              onClick={() => {
-                                if (
-                                  selectedClients.some(
-                                    (sc) => sc._id === client._id
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="w-full justify-between"
+                        >
+                          {selectedClients.length > 0
+                            ? selectedClients.map((c) => c.name).join(", ")
+                            : "Select clients..."}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="p-0 w-full min-w-[250px]">
+                        <Command>
+                          <CommandInput
+                            placeholder="Search clients by name or email"
+                            value={clientSearch}
+                            onValueChange={setClientSearch}
+                          />
+                          <CommandList>
+                            {loadingClients ? (
+                              <div className="p-2 text-gray-500">
+                                Loading...
+                              </div>
+                            ) : (
+                              <>
+                                <CommandEmpty>No clients found.</CommandEmpty>
+                                {allClients
+                                  .filter(
+                                    (c) =>
+                                      c.name
+                                        .toLowerCase()
+                                        .includes(clientSearch.toLowerCase()) ||
+                                      c.email
+                                        .toLowerCase()
+                                        .includes(clientSearch.toLowerCase())
                                   )
-                                ) {
-                                  setSelectedClients((prev) =>
-                                    prev.filter((sc) => sc._id !== client._id)
-                                  );
-                                } else {
-                                  setSelectedClients((prev) => [
-                                    ...prev,
-                                    client,
-                                  ]);
-                                }
-                              }}
-                            >
-                              <span className="font-medium text-blue-700 mr-2">
-                                {client.name}
-                              </span>
-                              <span className="text-xs text-gray-500">
-                                ({client.email})
-                              </span>
-                              {selectedClients.some(
-                                (sc) => sc._id === client._id
-                              ) && (
-                                <span className="ml-auto text-green-600 font-bold">
-                                  ✓
-                                </span>
-                              )}
-                            </div>
-                          ))
-                      )}
-                    </div>
+                                  .map((client) => (
+                                    <CommandItem
+                                      key={client._id}
+                                      onSelect={() => {
+                                        if (
+                                          selectedClients.some(
+                                            (sc) => sc._id === client._id
+                                          )
+                                        ) {
+                                          setSelectedClients((prev) =>
+                                            prev.filter(
+                                              (sc) => sc._id !== client._id
+                                            )
+                                          );
+                                        } else {
+                                          setSelectedClients((prev) => [
+                                            ...prev,
+                                            client,
+                                          ]);
+                                        }
+                                      }}
+                                      className={
+                                        selectedClients.some(
+                                          (sc) => sc._id === client._id
+                                        )
+                                          ? "bg-blue-100 text-blue-800"
+                                          : ""
+                                      }
+                                    >
+                                      <span className="font-medium mr-2">
+                                        {client.name}
+                                      </span>
+                                      <span className="text-xs text-gray-500">
+                                        ({client.email})
+                                      </span>
+                                      {selectedClients.some(
+                                        (sc) => sc._id === client._id
+                                      ) && (
+                                        <span className="ml-auto text-green-600 font-bold">
+                                          ✓
+                                        </span>
+                                      )}
+                                    </CommandItem>
+                                  ))}
+                              </>
+                            )}
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
                     {selectedClients.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-2">
                         {selectedClients.map((client) => (
