@@ -63,15 +63,20 @@ const navigationItems = [
 
 import { useLocation, useNavigate } from "react-router-dom";
 
+const SIDEBAR_WIDTH = 256; // 64 * 4 (w-64 in Tailwind = 16rem = 256px)
+
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <aside className="h-full w-64 bg-white border-r shadow-sm flex flex-col">
+    <aside
+      className="sticky top-0 left-0 h-[calc(100vh-4rem)] w-64 bg-white border-r shadow-sm flex flex-col z-10 hidden md:flex"
+      style={{ minHeight: "calc(100vh - 4rem)", width: SIDEBAR_WIDTH }}
+    >
       <div className="p-6 text-2xl font-bold text-blue-800 border-b">
         Lawyer Panel
       </div>
-      <nav className="flex-1 p-4 space-y-2">
+      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {navigationItems.map((item) => (
           <button
             key={item.id}
