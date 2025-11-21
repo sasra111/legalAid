@@ -2,13 +2,14 @@ import json
 import numpy as np
 from typing import List
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from redis import Redis
 from sentence_transformers import SentenceTransformer, util
 
 # Redis connection
 r = Redis(
-    host='redis-12128.c263.us-east-1-2.ec2.cloud.redislabs.com',
+    host="redis-12128.c263.us-east-1-2.ec2.cloud.redislabs.com",
     port=12128,
     decode_responses=False,
     username="default",
@@ -23,6 +24,18 @@ EMBEDDINGS, CHUNKS, METADATA = None, [], []
 
 
 app = FastAPI(title="Legal Aid Semantic Search API")
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+    ],  # Frontend origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 
 class SearchResult(BaseModel):
@@ -49,7 +62,8 @@ def load_embeddings():
 
     for k in keys:
         emb_bytes = r.hget(k, "embedding")
-        if not emb_bytes: continue
+        if not emb_bytes:
+            continue
         emb = np.frombuffer(emb_bytes, dtype=np.float32)
 
         meta = json.loads(r.hget(k, "metadata"))
@@ -78,14 +92,11 @@ def search(query: str = Query(...), top_k: int = 5):
             chunk_id=METADATA[i].get("chunk_id", ""),
             title=METADATA[i].get("title", ""),
             chunk_text=CHUNKS[i],
-            score=float(scores[i])
+            score=float(scores[i]),
         )
         for i in top_idx
     ]
 
     return SearchResponse(
-        query=query,
-        top_k=top_k,
-        total_chunks=len(CHUNKS),
-        results=results
+        query=query, top_k=top_k, total_chunks=len(CHUNKS), results=results
     )

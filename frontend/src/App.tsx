@@ -11,6 +11,7 @@ import CaseOverview from "@/components/lawyer_dashboard/CaseOverview";
 import BillingSummary from "@/components/lawyer_dashboard/BillingSummary";
 import UpcomingEvents from "@/components/lawyer_dashboard/UpcomingEvents";
 import Calendar from "./components/lawyer_dashboard/Calendar";
+import LegalSearch from "@/components/lawyer_dashboard/LegalSearch";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 function App() {
@@ -59,9 +60,9 @@ function App() {
             <Route
               path="search"
               element={
-                <div className="text-xl">
-                  Legal Search Section (Coming soon)
-                </div>
+                <ProtectedRoute allowedRoles={["lawyer"]}>
+                  <LegalSearch />
+                </ProtectedRoute>
               }
             />
             <Route
