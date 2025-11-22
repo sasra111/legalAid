@@ -1,4 +1,4 @@
-from config import redis_client as r
+from config import r_text as r
 
 def get_new_document_id():
     return r.incr("document_counter")  

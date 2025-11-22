@@ -5,7 +5,7 @@ from fastapi import FastAPI, Query, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from sentence_transformers import util
-from config import redis_client as r, model
+from config import r_raw, r_text, model
 from utils.preprocess import extract_pdf_text, clean_legal_text, chunk_sentences
 from utils.db_schema import get_new_document_id, store_document_record
 from utils.embeddings import process_and_store, sent_tokenize
@@ -47,29 +47,34 @@ class SearchResponse(BaseModel):
 def load_embeddings():
     global EMBEDDINGS, CHUNKS, METADATA
 
-    chunk_keys = sorted(r.keys("chunk:*"))
+    chunk_keys = sorted(r_text.keys("chunk:*"))
     vectors, chunks, meta_list = [], [], []
 
     for key in chunk_keys:
-        emb_bytes = r.hget(key, "embedding")
-        if not emb_bytes:
-            continue
-        emb = np.frombuffer(emb_bytes, dtype=np.float32)
+        # embedding must be read with r_raw
+        emb_bytes = r_raw.hget(key, "embedding")
+        if emb_bytes:
+            emb = np.frombuffer(emb_bytes, dtype=np.float32)
+            vectors.append(emb)
 
-        meta_raw = r.hgetall(key) 
+        # only request SAFE text fields
+        chunk_text = r_text.hget(key, "chunk_text")
+        doc_id     = r_text.hget(key, "document_id")
+        chunk_id   = r_text.hget(key, "chunk_id")
 
-        vectors.append(emb)
-        chunks.append(meta_raw.get("chunk_text", "")) 
-        meta_list.append(meta_raw)
+        chunks.append(chunk_text)
+        meta_list.append({
+            "chunk_id": chunk_id,
+            "document_id": doc_id,
+            "chunk_text": chunk_text,
+        })
 
     EMBEDDINGS = np.vstack(vectors) if vectors else np.empty((0, 768), dtype=np.float32)
     CHUNKS = chunks
     METADATA = meta_list
 
-    print(CHUNKS)
-    print("DEBUG -> Redis metadata:", meta_raw)  
-
     print(f"Loaded {len(CHUNKS)} chunks from Redis.")
+
 
 @app.get("/searchJudgements", response_model=SearchResponse)
 def search_judgements(query: str = Query(...), top_k: int = 5):
@@ -95,7 +100,7 @@ def search_judgements(query: str = Query(...), top_k: int = 5):
 
         # Fetch document information using document_id
         doc_id = meta.get("document_id", "")
-        doc_data = r.hgetall(f"document:{doc_id}")  # master table lookup
+        doc_data = r_text.hgetall(f"document:{doc_id}")  # master table lookup
         title = doc_data.get("document_name", "Unknown Document")
 
         # prepare response
