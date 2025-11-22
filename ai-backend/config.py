@@ -1,4 +1,5 @@
 from redis import Redis
+from sentence_transformers import SentenceTransformer
 
 # Redis connection
 redis_client = Redis(
@@ -8,3 +9,5 @@ redis_client = Redis(
     username="default",
     password="9FipQ6XWXVT1xJIaivdWztCkM26W8yRb",
 )
+
+model = SentenceTransformer("nlpaueb/legal-bert-base-uncased")

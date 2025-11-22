@@ -1,6 +1,7 @@
 import re
 from pdfminer.high_level import extract_text
-from nltk.tokenize import sent_tokenize
+import nltk
+nltk.download('punkt_tab')
 
 def extract_pdf_text(pdf_path):
     return extract_text(pdf_path)

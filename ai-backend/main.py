@@ -1,18 +1,17 @@
-import json
+import json, uuid, shutil
 import numpy as np
 from typing import List
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from sentence_transformers import SentenceTransformer, util
-from config import redis_client as r
-
-# Load same embedding model
-model = SentenceTransformer("nlpaueb/legal-bert-base-uncased")
+from sentence_transformers import util
+from config import redis_client as r, model
+from utils.preprocess import extract_pdf_text, clean_legal_text, chunk_sentences
+from utils.db_schema import get_new_document_id, store_document_record
+from utils.embeddings import process_and_store, sent_tokenize
 
 # Memory cache
 EMBEDDINGS, CHUNKS, METADATA = None, [], []
-
 
 app = FastAPI(title="Legal Aid Semantic Search API")
 
@@ -48,46 +47,99 @@ class SearchResponse(BaseModel):
 def load_embeddings():
     global EMBEDDINGS, CHUNKS, METADATA
 
-    keys = sorted(r.keys("case_vectors:*"))
+    chunk_keys = sorted(r.keys("chunk:*"))
     vectors, chunks, meta_list = [], [], []
 
-    for k in keys:
-        emb_bytes = r.hget(k, "embedding")
+    for key in chunk_keys:
+        emb_bytes = r.hget(key, "embedding")
         if not emb_bytes:
             continue
         emb = np.frombuffer(emb_bytes, dtype=np.float32)
 
-        meta = json.loads(r.hget(k, "metadata"))
+        meta_raw = r.hgetall(key) 
+
         vectors.append(emb)
-        chunks.append(meta["chunk_text"])
-        meta_list.append(meta)
+        chunks.append(meta_raw.get("chunk_text", "")) 
+        meta_list.append(meta_raw)
 
     EMBEDDINGS = np.vstack(vectors) if vectors else np.empty((0, 768), dtype=np.float32)
-    CHUNKS, METADATA = chunks, meta_list
+    CHUNKS = chunks
+    METADATA = meta_list
+
+    print(CHUNKS)
+    print("DEBUG -> Redis metadata:", meta_raw)  
 
     print(f"Loaded {len(CHUNKS)} chunks from Redis.")
 
-
 @app.get("/searchJudgements", response_model=SearchResponse)
-def search(query: str = Query(...), top_k: int = 5):
+def search_judgements(query: str = Query(...), top_k: int = 5):
     if EMBEDDINGS.shape[0] == 0:
-        return SearchResponse(query=query, top_k=0, total_chunks=0, results=[])
+        return SearchResponse(
+            query=query,
+            top_k=0,
+            total_chunks=0,
+            results=[]
+        )
 
+    # 1. Encode query and compute cosine scores
     query_emb = model.encode([query])
     scores = util.cos_sim(query_emb, EMBEDDINGS)[0].cpu().numpy()
+
+    # 2. Top chunk indices
     top_idx = np.argsort(scores)[::-1][:top_k]
 
-    results = [
-        SearchResult(
-            doc_id=METADATA[i].get("doc_id", ""),
-            chunk_id=METADATA[i].get("chunk_id", ""),
-            title=METADATA[i].get("title", ""),
-            chunk_text=CHUNKS[i],
-            score=float(scores[i]),
+    results = []
+    for i in top_idx:
+        # retrieve chunk metadata
+        meta = METADATA[i]  # contains document_id
+
+        # Fetch document information using document_id
+        doc_id = meta.get("document_id", "")
+        doc_data = r.hgetall(f"document:{doc_id}")  # master table lookup
+        title = doc_data.get("document_name", "Unknown Document")
+
+        # prepare response
+        results.append(
+            SearchResult(
+                doc_id=doc_id,
+                chunk_id=meta.get("chunk_id", ""),
+                title=title,
+                chunk_text=CHUNKS[i],
+                score=float(scores[i]),
+            )
         )
-        for i in top_idx
-    ]
 
     return SearchResponse(
-        query=query, top_k=top_k, total_chunks=len(CHUNKS), results=results
+        query=query,
+        top_k=top_k,
+        total_chunks=len(CHUNKS),
+        results=results
     )
+
+
+@app.post("/upload-document")
+async def upload_document(file: UploadFile = File(...)):
+    if not file.filename.endswith(".pdf"):
+        raise HTTPException(400, "Only PDF files allowed.")
+
+    temp_path = f"temp_{uuid.uuid4().hex}.pdf"
+    with open(temp_path, "wb") as f:
+        shutil.copyfileobj(file.file, f)
+
+    # Create new document ID
+    doc_id = get_new_document_id()
+    title = file.filename.replace(".pdf", "")
+
+    #process PDF and create chunks + embeddings
+    chunk_count = process_and_store(temp_path, doc_id)
+
+    # Store master document record
+    store_document_record(doc_id, title, chunk_count)
+
+    return {
+        "status": "success",
+        "document_id": doc_id,
+        "document_name": title,
+        "chunks_created": chunk_count,
+        "message": f"Document '{title}' embedded successfully."
+    }

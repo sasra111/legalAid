@@ -6,3 +6,4 @@ redis
 pdfminer.six
 nltk
 pydantic
+python-multipart
