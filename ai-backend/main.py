@@ -4,17 +4,8 @@ from typing import List
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from redis import Redis
 from sentence_transformers import SentenceTransformer, util
-
-# Redis connection
-r = Redis(
-    host="redis-12128.c263.us-east-1-2.ec2.cloud.redislabs.com",
-    port=12128,
-    decode_responses=False,
-    username="default",
-    password="9FipQ6XWXVT1xJIaivdWztCkM26W8yRb",
-)
+from config import redis_client as r
 
 # Load same embedding model
 model = SentenceTransformer("nlpaueb/legal-bert-base-uncased")
