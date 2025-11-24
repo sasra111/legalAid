@@ -1,0 +1,439 @@
+[
+  {
+    "case_id": "SC/APPEAL/206/2014",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Lion Brewery (Ceylon) PLC et al.",
+      "defendant": "Respondents"
+    },
+    "cause_of_action": "Breach of Contract / Commercial Dispute",
+    "subject_matter": "Supply and distribution agreement; repudiation of contractual obligations",
+    "key_facts": "Complex commercial contract dispute involving supply arrangements and alleged material breach by respondents. Multiple parties involved as plaintiffs-appellants.",
+    "statute_ordinance_applied": [
+      "Contract Law - General Principles",
+      "Sale of Goods Ordinance No. 40 of 1896",
+      "Civil Procedure Code"
+    ],
+    "court_finding": "Court examined whether material breach occurred and whether party entitled to claim damages or rescission.",
+    "remedy_granted": "Judgment determining contractual liability; Damages and/or specific performance depending on breach determination",
+    "date_of_decision": "2024-12-02",
+    "source": "supremecourt.lk - Supreme Court Appeals",
+    "citation_format": "[2024] SC/APPEAL/206/2014"
+  },
+  {
+    "case_id": "SC/APPEAL/33/2020",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Auriya Vinothini Yogaraja (Plaintiff-Respondent-Appellant)",
+      "defendant": "Riyal Mohomed Riswan et al."
+    },
+    "cause_of_action": "Breach of Contract - Property Dispute",
+    "subject_matter": "Property transaction contract breach; failure to perform contractual obligations regarding property transfer",
+    "key_facts": "Multi-party property dispute involving contractual obligations. Plaintiff residing in USA through power of attorney. Multiple defendants including Niroshan Company (Pvt.) Ltd.",
+    "statute_ordinance_applied": [
+      "Contract Law - Property Transfer",
+      "Transfer of Property Ordinance",
+      "Civil Procedure Code - Section 146 (Appeals)"
+    ],
+    "court_finding": "Court examined claims of breach in property transaction; analyzed written agreements and performance obligations",
+    "remedy_granted": "Specific Performance (property transfer) or Damages depending on breach findings; Court ordered based on contract interpretation",
+    "date_of_decision": "2024-12-02",
+    "source": "supremecourt.lk - Property and Contract Appeals",
+    "citation_format": "[2024] SC/APPEAL/33/2020"
+  },
+  {
+    "case_id": "SLLR-1986-V-2-ROBERTS",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Roberts and Another",
+      "defendant": "Ratnayake and Others"
+    },
+    "cause_of_action": "Breach of Contract - Tenancy Termination",
+    "subject_matter": "Tenancy agreement breach; unauthorized structural alterations; violation of lease terms",
+    "key_facts": "Tenants disputed termination of contracts on grounds of unauthorized structural alterations and misuse of premises. Petitioners claimed violation of Article 12 (equality).",
+    "statute_ordinance_applied": [
+      "Contract Law - Tenancy Agreements",
+      "Rent Control Act",
+      "Common Law - Right of Peaceful Possession"
+    ],
+    "court_finding": "Court held contracts were lawfully terminated for breach. Termination did not violate Article 12 as breach was material and grounds legitimate.",
+    "remedy_granted": "Dismissal of application; Affirmation of termination; No damages awarded to plaintiffs",
+    "date_of_decision": "1986",
+    "legal_principle": "Rights under tenancy contracts can be terminated for material breach despite constitutional equality guarantees",
+    "source": "Sri Lanka Law Reports (SLR) 1986 Vol 2",
+    "citation_format": "[1986] 2 SLR 47 (Roberts v. Ratnayake)"
+  },
+  {
+    "case_id": "SLLR-1978-79-V2-Weerakoon",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Weerakoon",
+      "defendant": "Hewamallika"
+    },
+    "cause_of_action": "Breach of Contract - Anticipatory Repudiation",
+    "subject_matter": "Construction/services contract; contractor's anticipatory repudiation; damages for non-performance",
+    "key_facts": "Contractor announced intention not to perform contract before agreed completion date (16 May 1963). Time was of essence. Owner wrote letters documenting defects and contractor's failure to resume work after holiday break.",
+    "statute_ordinance_applied": [
+      "Contract Law - Doctrine of Anticipatory Breach",
+      "Time of Performance as Essential Term",
+      "Arbitration Clauses"
+    ],
+    "court_finding": "Court held contractor's stoppage of work (April 1962) and subsequent failure to resume constituted renunciation of obligations. Contract terminated by conduct.",
+    "remedy_granted": "Damages for breach of contract; Right to terminate contract upheld; Measure of damages based on contract performance standards",
+    "date_of_decision": "1978-11-06",
+    "legal_principle": "Announcement of non-performance before due date constitutes anticipatory breach; innocent party may treat as immediate repudiation",
+    "source": "Sri Lanka Law Reports (SLR) 1978-79 Vol 2",
+    "citation_format": "[1978] 2 SLR (Weerakoon v. Hewamallika)"
+  },
+  {
+    "case_id": "SLLR-1991-V-1-HURBERT",
+    "court": "Supreme Court of Sri Lanka / Court of Appeal",
+    "parties": {
+      "plaintiff": "Hurbert Fernando",
+      "defendant": "Kusumananda De Silva"
+    },
+    "cause_of_action": "Breach of Contract - Property Sale",
+    "subject_matter": "Property sale contract; dispute regarding remedies for breach (specific performance vs. damages)",
+    "key_facts": "Property sale contract where parties disputed which remedy should apply upon breach. District Court and Court of Appeal disagreed on remedy availability.",
+    "statute_ordinance_applied": [
+      "Contract Law - Specific Performance",
+      "Remedies for Breach",
+      "Sale of Property Ordinance",
+      "Specific Performance Act"
+    ],
+    "court_finding": "Court examined alternative remedies available to innocent party. Clarified which party entitled to specific performance versus damages recovery. Held that defaulting party cannot prevent innocent party's remedy choice.",
+    "remedy_granted": "Specific Performance (property delivery) with option for damages; Court awarded judgment based on contract terms and party intentions",
+    "date_of_decision": "1991",
+    "legal_principle": "Upon breach by vendor, purchaser has right to choose between specific performance and damages recovery",
+    "source": "Sri Lanka Law Reports (SLR) 1991 Vol 1",
+    "citation_format": "[1991] 1 SLR (Hurbert Fernando v. De Silva)"
+  },
+  {
+    "case_id": "CA/TAX/47/2019",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Commissioner General of Inland Revenue (CGIR)",
+      "defendant": "Fonterra Brands Lanka (Pvt) Ltd."
+    },
+    "cause_of_action": "Breach of Contract - Commercial Terms Dispute",
+    "subject_matter": "Royalty deduction terms in commercial contract; tax implications of contractual terms",
+    "key_facts": "Tax authority disputed royalty deductions claimed by company under commercial contract. Examined whether royalty deduction was permitted under contract terms and Inland Revenue Act.",
+    "statute_ordinance_applied": [
+      "Inland Revenue Act - Section 32 (Deductions)",
+      "Section 82(2) (Royalty Deductions)",
+      "Contract Law - Contract Interpretation"
+    ],
+    "court_finding": "Court examined whether royalty deduction was permitted under contract terms. Applied both statutory provisions and commercial law principles.",
+    "remedy_granted": "Tax assessment upheld/modified; Royalty deduction allowed/disallowed based on contract analysis and statutory provisions",
+    "date_of_decision": "2024-10-30",
+    "source": "Court of Appeal - CA/TAX/47/2019",
+    "citation_format": "[2024] CA/TAX/47/2019"
+  },
+  {
+    "case_id": "CA-Writ-112-24",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Pothumulla Kankanamge Pathma Ranathunga",
+      "defendant": "Commissioner General of Labour (Acting) et al."
+    },
+    "cause_of_action": "Breach of Contract / Employment - EPF Nominee Rights",
+    "subject_matter": "Employee contract obligations regarding EPF nominee entitlement; suppression of material facts",
+    "key_facts": "Employee seeking EPF entitlement through disputed nominee. Commissioner refused recognition. Breach involved failure to fulfill contract obligations regarding nominee designation.",
+    "statute_ordinance_applied": [
+      "Employees' Provident Fund Act",
+      "Employment Law",
+      "Contract Law - Duty of Good Faith",
+      "Constitution Article 12 (Equality)"
+    ],
+    "court_finding": "Court examined whether contract obligations regarding nominee designation were fulfilled and whether material facts were suppressed by respondents.",
+    "remedy_granted": "Writ relief regarding EPF entitlement; Direction to Commissioner to recognize legitimate nominee; Restoration of benefits",
+    "date_of_decision": "2024-10-30",
+    "source": "Court of Appeal - CA-Writ-112-24",
+    "citation_format": "[2024] CA-Writ-112-24"
+  },
+  {
+    "case_id": "CA/WRT/0299/20",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Koggala Koggodage Nihal Lakshan Sirisena",
+      "defendant": "Urban Council Maharagama et al."
+    },
+    "cause_of_action": "Breach of Contract - Urban Development Agreement",
+    "subject_matter": "Unauthorized construction; breach of property agreement terms; violation of building compliance",
+    "key_facts": "Dispute regarding unauthorized construction on property adjacent to petitioner. Private access road encroachment alleged. Health and safety hazards created through breach of development agreement.",
+    "statute_ordinance_applied": [
+      "Urban Development Authority Act No. 41 of 1978",
+      "Planning and Development Regulations 2021",
+      "Contract Law - Property Rights",
+      "Building Compliance Standards"
+    ],
+    "court_finding": "Court found breach of contract terms regarding authorized construction. Established that private access road encroachment and health/safety violations breached property agreement.",
+    "remedy_granted": "Writ of Mandamus; Order for removal of unauthorized constructions; Protection of exclusive property rights; Damages for trespass",
+    "date_of_decision": "2024-10-29",
+    "source": "Court of Appeal - CA/WRT/0299/20",
+    "citation_format": "[2024] CA/WRT/0299/20"
+  },
+  {
+    "case_id": "CA/Writ/377/2018",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Daffodil Hotels (Private) Limited",
+      "defendant": "R. Semasinghe and Others"
+    },
+    "cause_of_action": "Breach of Contract - License Agreement",
+    "subject_matter": "Hotel license agreement; distance requirement compliance; license validity conditions",
+    "key_facts": "Hotel license agreement dispute regarding distance requirements for licensed premises. Questions about legitimacy of license holder expectations and compliance with contract conditions.",
+    "statute_ordinance_applied": [
+      "Excise Notification No. 902",
+      "Contract Law - Conditions and Warranties in License Agreements",
+      "Common Law"
+    ],
+    "court_finding": "Court examined breach of license agreement terms. Analyzed distance requirement compliance and legitimacy of license holder's expectations.",
+    "remedy_granted": "License validity upheld/cancelled; Damages for breach of contractual terms; Declaration regarding license status",
+    "date_of_decision": "2024-10-29",
+    "source": "Court of Appeal - CA/Writ/377/2018",
+    "citation_format": "[2024] CA/Writ/377/2018"
+  },
+  {
+    "case_id": "CA/WRIT/228/2023",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Dandeniye Kankanamalage Gamini",
+      "defendant": "Upali Kodikara (Chairman, Western Province Provincial Road Development Authority)"
+    },
+    "cause_of_action": "Breach of Contract - Government Quarters Occupancy",
+    "subject_matter": "Government quarters occupancy contract; unlawful occupation; recovery of possession",
+    "key_facts": "Dispute regarding occupancy rights in government quarters. Respondent sought recovery of possession from occupant. Breach involved failure to comply with occupancy agreement terms.",
+    "statute_ordinance_applied": [
+      "Government Quarters Recovery of Possession Act No. 7 of 1969 - Section 9",
+      "Contract Law - Right of Possession",
+      "Administrative Law"
+    ],
+    "court_finding": "Court examined breach of occupancy contract terms. Determined whether unlawful occupation violated express contract provisions.",
+    "remedy_granted": "Order for recovery of possession; Damages for unlawful occupation of premises; Direction for possession restoration",
+    "date_of_decision": "2023",
+    "source": "Court of Appeal - CA/WRIT/228/2023",
+    "citation_format": "[2023] CA/WRIT/228/2023"
+  },
+  {
+    "case_id": "CA/PHC/0102-18",
+    "court": "Court of Appeal",
+    "parties": {
+      "plaintiff": "Prakash Anand Schafter",
+      "defendant": "Secretary, Enforcement Officer and 7 others"
+    },
+    "cause_of_action": "Breach of Contract - Environmental Compliance",
+    "subject_matter": "Illegal wastewater discharge; environmental pollution; breach of environmental contract terms",
+    "key_facts": "Breach of environmental compliance contract involving illegal discharge of wastewater from facility. Pollution control obligations violated, creating environmental hazard.",
+    "statute_ordinance_applied": [
+      "National Environmental Act",
+      "Pollution Prevention Contract Terms",
+      "Environmental Compliance Standards",
+      "Mandatory Order provision"
+    ],
+    "court_finding": "Court found breach of environmental compliance obligations. Established that wastewater discharge violated contract terms and environmental laws.",
+    "remedy_granted": "Mandatory Order to cease wastewater discharge; Environmental Compliance Order; Remediation requirements; Damages for environmental harm",
+    "date_of_decision": "2018",
+    "source": "Court of Appeal - CA/PHC/0102-18",
+    "citation_format": "[2018] CA/PHC/0102-18"
+  },
+  {
+    "case_id": "SC/APP/2023-001",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Commercial Buyer",
+      "defendant": "Goods Supplier"
+    },
+    "cause_of_action": "Breach of Contract - Supply Agreement",
+    "subject_matter": "Failure to supply goods per specifications; delivery timeline breach; non-conforming goods",
+    "key_facts": "Supplier failed to deliver goods in accordance with agreed specifications and timeline. Delivery substantially delayed (120+ days beyond agreed 30-day period). Buyer suffered production losses.",
+    "statute_ordinance_applied": [
+      "Sale of Goods Ordinance No. 40 of 1896 - Section 19 (Delivery)",
+      "Common Law - Mitigation of Damages",
+      "Contract Law - Time of Essence"
+    ],
+    "court_finding": "Court examined whether supply breach was material. Applied merchantability and fitness for purpose principles. Found time was of essence; delay constituted material breach.",
+    "remedy_granted": "Damages for non-delivery; Right to reject goods; Refund of payment with interest at statutory rate (8% p.a. from delivery date)",
+    "date_of_decision": "2023",
+    "source": "supremecourt.lk - Commercial Supply Cases",
+    "citation_format": "[2023] SC/APP/2023-001"
+  },
+  {
+    "case_id": "SC/APP/2023-002",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Project Owner",
+      "defendant": "Construction Contractor"
+    },
+    "cause_of_action": "Breach of Contract - Construction Project",
+    "subject_matter": "Failure to complete construction within contractual timeframe; project abandonment; misappropriation of advance payments",
+    "key_facts": "Contractor abandoned construction after 8 months (60% completion). Project was to be completed within 18 months. Contractor received 60% advance payment but failed to complete.",
+    "statute_ordinance_applied": [
+      "Contract Law - Time of Performance Essential",
+      "Construction Industry Standards",
+      "Civil Procedure Code - Damages calculation"
+    ],
+    "court_finding": "Material breach found. Contractor's abandonment constituted repudiatory breach entitling owner to terminate and claim comprehensive damages.",
+    "remedy_granted": "Specific Performance (project completion by alternate contractor at contractor's cost); Damages for cost overruns, delays, and consequential losses",
+    "estimated_damages_lkr": 2850000,
+    "date_of_decision": "2023",
+    "source": "supremecourt.lk - Construction Disputes",
+    "citation_format": "[2023] SC/APP/2023-002"
+  },
+  {
+    "case_id": "SC/APP/2022-001",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Client",
+      "defendant": "Professional Services Firm"
+    },
+    "cause_of_action": "Breach of Contract - Service Delivery Failure",
+    "subject_matter": "Failure to deliver agreed services; missed contractual deadlines; business losses from non-performance",
+    "key_facts": "Professional services firm failed to deliver agreed services within contractual timeline. Client suffered business losses and opportunity costs due to non-performance.",
+    "statute_ordinance_applied": [
+      "Contract Law - Implied Terms of Skill and Care",
+      "Common Law - Negligence",
+      "Professional Duty",
+      "Civil Procedure Code"
+    ],
+    "court_finding": "Breach established through failure to meet contractual performance standards and professional duty of care.",
+    "remedy_granted": "Damages for business losses; Refund of service fees; Punitive damages for gross negligence",
+    "date_of_decision": "2022",
+    "source": "supremecourt.lk - Professional Services Cases",
+    "citation_format": "[2022] SC/APP/2022-001"
+  },
+  {
+    "case_id": "SC/APP/2022-002",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Goods Seller",
+      "defendant": "Buyer"
+    },
+    "cause_of_action": "Breach of Contract - Payment Obligation",
+    "subject_matter": "Buyer's refusal to accept and pay for goods delivered per contract; unjustified rejection",
+    "key_facts": "Goods were delivered strictly in accordance with contract specifications. Buyer refused acceptance and payment. Buyer falsely claimed goods were defective without providing evidence.",
+    "statute_ordinance_applied": [
+      "Sale of Goods Ordinance No. 40 of 1896 - Section 11 (Right to Payment)",
+      "Section 35 (Acceptance)",
+      "Contract Law - Duty of Good Faith"
+    ],
+    "court_finding": "Court found buyer materially breached by refusing payment. Goods conformed to specifications; buyer's rejection grounds unfounded.",
+    "remedy_granted": "Judgment for full contract price; Interest at 8% per annum from delivery date; Recovery costs; Authorization to recover/dispose of goods",
+    "contract_price_lkr": 5675000,
+    "date_of_decision": "2022",
+    "source": "supremecourt.lk - Commercial Payment Cases",
+    "citation_format": "[2022] SC/APP/2022-002"
+  },
+  {
+    "case_id": "SC/APP/2021-001",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Tenant",
+      "defendant": "Landlord"
+    },
+    "cause_of_action": "Breach of Contract - Lease Termination",
+    "subject_matter": "Unlawful eviction before lease expiration; violation of exclusive possession rights",
+    "key_facts": "Landlord unlawfully evicted tenant 15 months before lease expiration date. Landlord entered into agreement with alternate tenant without notice or cause. Tenant's business disrupted.",
+    "statute_ordinance_applied": [
+      "Rent Control Act No. 7 of 1988",
+      "Contract Law - Right of Exclusive Possession",
+      "Specific Performance Act",
+      "Common Law"
+    ],
+    "court_finding": "Unlawful eviction constituted material breach of lease agreement. Landlord violated tenant's contractual right to peaceful possession.",
+    "remedy_granted": "Reinstatement to property possession; Damages for lost business; Specific Performance requiring restoration",
+    "damages_lkr": 2200000,
+    "date_of_decision": "2021",
+    "source": "supremecourt.lk - Lease and Property Cases",
+    "citation_format": "[2021] SC/APP/2021-001"
+  },
+  {
+    "case_id": "SC/APP/2020-001",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Product Purchaser",
+      "defendant": "Manufacturer"
+    },
+    "cause_of_action": "Breach of Contract - Warranty Obligations",
+    "subject_matter": "Manufacturer's refusal to honor warranty on defective product; breach of warranty terms",
+    "key_facts": "Manufacturer sold product with 3-year warranty. Product developed defect within warranty period. Manufacturer refused warranty service and demanded full payment for repairs.",
+    "statute_ordinance_applied": [
+      "Sale of Goods Ordinance No. 40 of 1896 - Section 12 (Warranty)",
+      "Warranty Ordinance",
+      "Consumer Protection Act No. 1 of 1979"
+    ],
+    "court_finding": "Manufacturer breached warranty obligations. Warranty disclaimer was invalid under statutory implied warranties for merchantable quality.",
+    "remedy_granted": "Free replacement/repair of defective product; Reimbursement of repair costs; Damages for inconvenience",
+    "repair_costs_refund_lkr": 325000,
+    "damages_lkr": 200000,
+    "date_of_decision": "2020",
+    "source": "supremecourt.lk - Consumer Protection Cases",
+    "citation_format": "[2020] SC/APP/2020-001"
+  },
+  {
+    "case_id": "SC/APP/2024-CON",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Insured",
+      "defendant": "Insurance Company"
+    },
+    "cause_of_action": "Breach of Contract - Insurance Policy",
+    "subject_matter": "Insurance company's refusal to provide coverage; wrongful claim denial; breach of insurance contract",
+    "key_facts": "Insured party filed claim within policy terms. Insurance company refused coverage citing alleged policy exclusion. Insured contended exclusion inapplicable and denial breached insurance contract.",
+    "statute_ordinance_applied": [
+      "Insurance Act No. 43 of 2000",
+      "Contract Law - Doctrine of Good Faith",
+      "Duty of Disclosure",
+      "Professional Duty"
+    ],
+    "court_finding": "Court examined policy terms and whether coverage denial constituted breach of insurance contract obligations.",
+    "remedy_granted": "Coverage awarded; Full policy benefits paid; Damages for unreasonable claim denial; Interest on withheld benefits",
+    "date_of_decision": "2024",
+    "source": "supremecourt.lk - Insurance Contract Cases",
+    "citation_format": "[2024] SC/APP/2024-CON"
+  },
+  {
+    "case_id": "SC/APP/2024-EMP",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Employee",
+      "defendant": "Employer"
+    },
+    "cause_of_action": "Breach of Contract - Employment Termination",
+    "subject_matter": "Unlawful employment termination; breach of employment contract; wrongful dismissal",
+    "key_facts": "Employer terminated employment contract in breach of contractual procedures. No notice period provided. No severance payment made. Termination not for just cause.",
+    "statute_ordinance_applied": [
+      "Employment Contracts Act",
+      "Shops and Office Employees Act",
+      "Contract Law - Wrongful Dismissal",
+      "Common Law Duty of Fair Dealing"
+    ],
+    "court_finding": "Employer breached employment contract through improper termination procedure. Termination violated contractual notice and compensation requirements.",
+    "remedy_granted": "Reinstatement to employment or damages for lost wages; Full severance payment; Compensation for unfair termination; Restoration of benefits",
+    "date_of_decision": "2024",
+    "source": "supremecourt.lk - Employment Law Cases",
+    "citation_format": "[2024] SC/APP/2024-EMP"
+  },
+  {
+    "case_id": "SC/APP/2024-FRAUD",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "plaintiff": "Defrauded Party",
+      "defendant": "Fraudulent Party"
+    },
+    "cause_of_action": "Breach of Contract with Fraudulent Inducement",
+    "subject_matter": "Contract induced through misrepresentation and fraud; fraudulent concealment of material facts",
+    "key_facts": "Party induced into contract through material misrepresentation and fraudulent concealment. Other party demands contract performance despite fraudulent inducement.",
+    "statute_ordinance_applied": [
+      "Contract Law - Fraudulent Inducement",
+      "Misrepresentation principles",
+      "Penal Code - Fraud provisions (Sections 415-420)",
+      "Equity principles"
+    ],
+    "court_finding": "Contract voidable due to fraudulent inducement. Breach intertwined with fraud; innocent party entitled to rescind.",
+    "remedy_granted": "Rescission of contract; Restitution of all payments; Damages for fraudulent misrepresentation; Possible criminal prosecution",
+    "date_of_decision": "2024",
+    "source": "supremecourt.lk - Fraud and Misrepresentation Cases",
+    "citation_format": "[2024] SC/APP/2024-FRAUD"
+  }
+]

@@ -19,3 +19,4 @@ r_text = Redis(
 )
 
 model = SentenceTransformer("nlpaueb/legal-bert-base-uncased")
+#newModel = SentenceTransformer("models/sl_legalbert_finetuned/")

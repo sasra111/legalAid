@@ -47,12 +47,12 @@ const navigationItems = [
     icon: <Calendar className="h-5 w-5" />,
     path: "/lawyer-dashboard/lawyer/calendar",
   },
-  {
-    id: "billing",
-    label: "Billing",
-    icon: <DollarSign className="h-5 w-5" />,
-    path: "/lawyer-dashboard/lawyer/billing",
-  },
+  // {
+  //   id: "billing",
+  //   label: "Billing",
+  //   icon: <DollarSign className="h-5 w-5" />,
+  //   path: "/lawyer-dashboard/lawyer/billing",
+  // },
   {
     id: "settings",
     label: "Settings",

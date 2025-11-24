@@ -15,7 +15,6 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
-
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/clients", require("./routes/clientRoutes"));
 app.use("/api/events", require("./routes/eventRoutes"));
@@ -33,21 +32,21 @@ async function initializeTestUsers() {
   const testUsers = [
     {
       email: "admin@legalaid.com",
-      password: "admin123",
+      password: "Sasith@123",
       role: "admin",
       name: "Admin User",
       username: "admin",
     },
     {
       email: "lawyer@legalaid.com",
-      password: "lawyer123",
+      password: "Sasith@123",
       role: "lawyer",
       name: "Lawyer User",
       username: "lawyer",
     },
     {
       email: "client@legalaid.com",
-      password: "client123",
+      password: "Sasith@123",
       role: "client",
       name: "Client User",
       username: "client",

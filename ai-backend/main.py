@@ -9,24 +9,22 @@ from config import r_raw, r_text, model
 from utils.preprocess import extract_pdf_text, clean_legal_text, chunk_sentences
 from utils.db_schema import get_new_document_id, store_document_record
 from utils.embeddings import process_and_store, sent_tokenize
+from utils.cbr import compute_cbr_similarity
 
-# Memory cache
 EMBEDDINGS, CHUNKS, METADATA = None, [], []
 
-app = FastAPI(title="Legal Aid Semantic Search API")
+app = FastAPI(title="Legal Aid AI Backend")
 
-# Configure CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:3000",
-    ],  # Frontend origins
+    ], 
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],  
 )
-
 
 class SearchResult(BaseModel):
     doc_id: str
@@ -35,13 +33,27 @@ class SearchResult(BaseModel):
     chunk_text: str
     score: float
 
-
 class SearchResponse(BaseModel):
     query: str
     top_k: int
     total_chunks: int
     results: List[SearchResult]
 
+class NewCase(BaseModel):
+    cause_of_action: str
+    subject_matter: str
+    statute_ordinance_applied: list
+    key_facts: str
+
+with open("casebase/contract_cases.json", "r") as f:
+    CASE_BASE = json.load(f)
+
+CASE_VECTORS = []
+for case in CASE_BASE:
+    vector = model.encode([case["key_facts"]], convert_to_numpy=True).flatten()
+    CASE_VECTORS.append(vector)
+
+CASE_VECTORS = np.vstack(CASE_VECTORS) 
 
 @app.on_event("startup")
 def load_embeddings():
@@ -74,6 +86,10 @@ def load_embeddings():
     METADATA = meta_list
 
     print(f"Loaded {len(CHUNKS)} chunks from Redis.")
+
+@app.get("/")
+def home():
+    return {"message": "AI Backend is running!"}
 
 
 @app.get("/searchJudgements", response_model=SearchResponse)
@@ -148,3 +164,8 @@ async def upload_document(file: UploadFile = File(...)):
         "chunks_created": chunk_count,
         "message": f"Document '{title}' embedded successfully."
     }
+
+@app.post("/findSimilarCases")
+def find_similar_cases(new_case: NewCase, top_k: int = 5):
+    result = compute_cbr_similarity(new_case.dict(), CASE_BASE, CASE_VECTORS, top_k)
+    return result

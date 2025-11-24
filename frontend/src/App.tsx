@@ -13,6 +13,7 @@ import UpcomingEvents from "@/components/lawyer_dashboard/UpcomingEvents";
 import Calendar from "./components/lawyer_dashboard/Calendar";
 import LegalSearch from "@/components/lawyer_dashboard/LegalSearch";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import SimilarCases from "./components/lawyer_dashboard/SimilarCases";
 
 function App() {
   return (
@@ -48,8 +49,10 @@ function App() {
             <Route
               path="cases"
               element={
-                <div className="text-xl">Cases Section (Coming soon)</div>
-              }
+                <ProtectedRoute allowedRoles={["lawyer"]}>
+                  <SimilarCases />
+                </ProtectedRoute>
+                }
             />
             <Route
               path="documents"
