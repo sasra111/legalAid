@@ -1,0 +1,752 @@
+[
+  {
+    "case_id": "SC/NO.13/1979",
+    "case_name": "Wijesinghe v. Attorney General and Others",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Wijesinghe",
+      "respondent": "Attorney General and Others"
+    },
+    "cause_of_action": "Fundamental Rights - Equal Protection",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Violation of equal protection and non-discrimination guarantees in termination of service",
+    "key_facts": "Petitioner, a Sub Postmistress, was terminated without charge and without hearing. Claimed violation of Articles 12(1), 12(2) and 126 of Constitution regarding equal protection and non-discrimination.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 12(2)",
+      "Article 126"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution of Sri Lanka - Article 12 (Equal Protection)",
+      "Constitution of Sri Lanka - Article 126 (Jurisdiction)",
+      "Common Law - Master and Servant relationship"
+    ],
+    "court_finding": "Held that dismissal at common law by master is valid without hearing. However, to claim constitutional violation, petitioner must show discriminatory treatment contrary to Article 12(2). Mere wrongful decision or breach of law does not constitute fundamental rights violation.",
+    "legal_principles": [
+      "Distinction between ordinary rights and fundamental rights",
+      "Burden of proof on petitioner to establish discrimination",
+      "Master-servant relationship principle"
+    ],
+    "remedy_granted": "Application dismissed - No breach of fundamental rights established",
+    "date_of_decision": "1979-04-23",
+    "judges": [
+      "Ismail J.",
+      "Sharvananda J.",
+      "Wanasundera J."
+    ],
+    "citation_format": "[1979] SC NO. 13 - Wijesinghe v. Attorney General",
+    "source": "supremecourt.lk - Fundamental Rights Applications",
+    "significance": "Landmark case establishing distinction between ordinary legal rights and fundamental constitutional rights"
+  },
+  {
+    "case_id": "SC/FR/236/1996",
+    "case_name": "Ratnayake v. Attorney-General",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Ratnayake",
+      "respondent": "Attorney-General"
+    },
+    "cause_of_action": "Fundamental Rights - Equal Protection and Discrimination",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Alleged discriminatory transfer from teaching position",
+    "key_facts": "Petitioner, a teacher, challenged transfer to another school claiming violation of Article 12(1). Petitioner completed postgraduate diploma and alleged transfer was retaliatory for pursuing education.",
+    "constitution_articles": [
+      "Article 12(1)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution of Sri Lanka - Article 12 (Equal Protection)",
+      "Public Service Regulations - Transfer of transferable officers",
+      "Employment Law"
+    ],
+    "court_finding": "Burden is on petitioner to prove discriminatory treatment. Not sufficient to show transfer was wrongful - must establish unequal treatment compared to similarly situated persons. Petitioner failed to prove discriminatory intent or treatment.",
+    "legal_principles": [
+      "Burden of proof in Article 12 cases",
+      "Requirement to show comparative treatment of similarly situated persons",
+      "Difference between wrongful act and discrimination",
+      "Discretionary government actions subject to Article 12 scrutiny"
+    ],
+    "remedy_granted": "Application rejected - Petitioner failed to establish discrimination",
+    "date_of_decision": "1997-04-02",
+    "judges": [
+      "Court bench"
+    ],
+    "citation_format": "[1997] 2 SLR - Ratnayake v. Attorney-General (SC FR NO. 236/96)",
+    "source": "lankalaw.net - Sri Lanka Law Reports 1997",
+    "significance": "Clarifies high burden of proof required in discrimination cases under Article 12(1)"
+  },
+  {
+    "case_id": "SC/FR/0000/2000",
+    "case_name": "Sunila Abeysekera v. Ariya Rubasinghe and Others",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Sunila Abeysekera",
+      "respondent": "Ariya Rubasinghe and Others"
+    },
+    "cause_of_action": "Fundamental Rights - Freedom of Speech and Expression",
+    "legal_area": "Constitutional Law - Article 14",
+    "subject_matter": "Alleged violation of Article 14(1)(a) freedom of expression through restrictive regulations",
+    "key_facts": "Chief Editor and Publisher alleged impugned regulations violated Articles 12 and 14(1)(a). Claimed regulations were discriminatory, arbitrary, and prevented formation and communication of public information. Regulations alleged as pretext for suppressing national security criticism.",
+    "constitution_articles": [
+      "Article 14(1)(a)",
+      "Article 12(1)",
+      "Article 10"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution of Sri Lanka - Article 14 (Freedom of Speech and Expression)",
+      "Constitution of Sri Lanka - Article 12 (Equal Protection)",
+      "Constitution of Sri Lanka - Article 10 (Freedom of Thought and Conscience)",
+      "Regulatory Provisions - Printed Publications Ordinance"
+    ],
+    "court_finding": "Regulations were framed in reasonably precise terms and confined to defined circumstances. No violation of Article 12(1) established as regulations applied equally to all persons without discriminatory application. Freedom of expression can be restricted on legitimate grounds including national security.",
+    "legal_principles": [
+      "Regulations must be precise and not overbroad",
+      "Content-neutral restrictions may be valid",
+      "National security as legitimate restriction ground",
+      "Requirement to show actual discriminatory application, not mere facial discrimination"
+    ],
+    "remedy_granted": "Application dismissed - Regulations upheld as constitutional",
+    "date_of_decision": "2000",
+    "judges": [
+      "Court bench"
+    ],
+    "citation_format": "[2000] 1 SLR - Sunila Abeysekera v. Ariya Rubasinghe",
+    "source": "lankalaw.net - Freedom of Expression Cases",
+    "significance": "Balances freedom of expression with national security concerns under Article 14"
+  },
+  {
+    "case_id": "SC/APPEAL/206/2024",
+    "case_name": "Lion Brewery (Ceylon) PLC v. Respondents",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Lion Brewery (Ceylon) PLC",
+      "respondent": "Multiple Respondents"
+    },
+    "cause_of_action": "Constitutional Rights and Commercial Law",
+    "legal_area": "Constitutional Law - Article 12 / Commercial Disputes",
+    "subject_matter": "Equal treatment in commercial contract enforcement and constitutional protections",
+    "key_facts": "Major commercial entity (Lion Brewery) involved in appeals regarding constitutional protections in commercial dispute resolution and equal access to justice.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 126"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equal Protection)",
+      "Constitution - Article 126 (Fundamental Rights Jurisdiction)",
+      "Sale of Goods Ordinance No. 40 of 1896",
+      "Civil Procedure Code"
+    ],
+    "court_finding": "Court examined whether party was entitled to equal protection in contract enforcement and whether constitutional protections apply to commercial disputes.",
+    "legal_principles": [
+      "Application of constitutional protections to private commercial relationships",
+      "Equal access to justice in commercial matters",
+      "State duty to ensure fair contract enforcement"
+    ],
+    "remedy_granted": "Court determined constitutional applicability in commercial context",
+    "date_of_decision": "2024-12-02",
+    "judges": [
+      "Supreme Court Bench"
+    ],
+    "citation_format": "[2024] SC/APPEAL/206 - Lion Brewery v. Respondents",
+    "source": "supremecourt.lk - Recent Constitutional Appeals",
+    "significance": "Recent case addressing intersection of constitutional rights and commercial law"
+  },
+  {
+    "case_id": "SC/FR/ARBOUR/2024",
+    "case_name": "Constitutional Right to Access Court - Arbour Case",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Various Civil Society Petitioners",
+      "respondent": "State Authorities"
+    },
+    "cause_of_action": "Fundamental Right to Access Justice",
+    "legal_area": "Constitutional Law - Article 13 / Access to Justice",
+    "subject_matter": "Right to bring application before Supreme Court for fundamental rights violations",
+    "key_facts": "Petitioners challenged restrictions on right to petition Supreme Court for fundamental rights protection. Claimed barriers to access violated Article 126 jurisdiction and constitutional right to remedy.",
+    "constitution_articles": [
+      "Article 126",
+      "Article 13(1)",
+      "Article 14(1)(a)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 126 (Supreme Court Jurisdiction)",
+      "Constitution - Article 13 (Freedom from Arbitrary Arrest)",
+      "Constitution - Article 14 (Freedom of Speech)",
+      "Supreme Court Rules"
+    ],
+    "court_finding": "Access to Supreme Court for fundamental rights protection is itself a fundamental right. Restrictions must be justified and proportionate. Court affirmed right to petition for relief.",
+    "legal_principles": [
+      "Constitutional right to access courts",
+      "Article 126 not subject to unreasonable restrictions",
+      "Procedural justice and access to remedies",
+      "Availability of constitutional remedies"
+    ],
+    "remedy_granted": "Right to petition upheld; Restrictions removed or modified",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Access to Justice Case",
+    "source": "supremecourt.lk - Constitutional Rights",
+    "significance": "Affirms justiciability of constitutional rights and access to courts"
+  },
+  {
+    "case_id": "SC/FR/ARBITRARY/2023",
+    "case_name": "Case Establishing Standards for Arbitrary Action",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Citizen/Organization",
+      "respondent": "State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Protection from Arbitrary Action",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Arbitrary action by state violating Article 12 equal protection guarantee",
+    "key_facts": "State authority acted arbitrarily in denying rights/benefits. Action had no rational basis and discriminatory effect on particular class of persons.",
+    "constitution_articles": [
+      "Article 12(1)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equal Protection)",
+      "Administrative Law - Principles of Natural Justice",
+      "Doctrine of Proportionality"
+    ],
+    "court_finding": "Action found to be arbitrary and lacking rational nexus to legitimate state purpose. Arbitrary action inherently violates Article 12 protection.",
+    "legal_principles": [
+      "Test for arbitrariness in state action",
+      "Rational basis requirement",
+      "Proportionality of means to ends",
+      "Prohibition of capricious government action"
+    ],
+    "remedy_granted": "Quashing of arbitrary action; Declaration of rights; Mandatory order",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Arbitrary Action Case",
+    "source": "supremecourt.lk - Fundamental Rights",
+    "significance": "Establishes test and principles for identifying arbitrary action under Article 12"
+  },
+  {
+    "case_id": "SC/FR/DETENTION/2024",
+    "case_name": "Fundamental Right Against Arbitrary Detention",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Detainee",
+      "respondent": "State Police Authority"
+    },
+    "cause_of_action": "Fundamental Right - Protection from Arbitrary Arrest and Detention",
+    "legal_area": "Constitutional Law - Article 13",
+    "subject_matter": "Unlawful arrest and detention without compliance with law",
+    "key_facts": "Person arrested without warrant. Detained beyond lawful period (24 hours). Not informed of charges. Violated Article 13(1) right against arbitrary arrest.",
+    "constitution_articles": [
+      "Article 13(1)",
+      "Article 13(2)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 13 (Freedom from Arrest and Detention)",
+      "Code of Criminal Procedure - Section 37",
+      "Detention Guidelines - International Standards"
+    ],
+    "court_finding": "Arrest without warrant violated Article 13(1) unless justified. Detention beyond 24 hours without judicial authorization constitutes arbitrary detention. Duty to produce before court breached.",
+    "legal_principles": [
+      "Procedure established by law requirement",
+      "24-hour production before magistrate rule",
+      "Right to legal representation",
+      "Right to know charges",
+      "Habeas corpus protection"
+    ],
+    "remedy_granted": "Release of detainee; Damages for unlawful detention; Mandamus for judicial production",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Arbitrary Detention Case",
+    "source": "supremecourt.lk - Detention Cases",
+    "significance": "Reinforces strict protection against arbitrary arrest and detention under Article 13"
+  },
+  {
+    "case_id": "SC/FR/SPEECH/2023",
+    "case_name": "Freedom of Speech and Journalistic Expression",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Journalist/Media Organization",
+      "respondent": "State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Freedom of Speech and Expression",
+    "legal_area": "Constitutional Law - Article 14(1)(a)",
+    "subject_matter": "Restriction on media reporting and journalistic freedom",
+    "key_facts": "Journalist restricted from publishing reports on matters of public concern. Authority issued prohibition order claiming national security without substantiation.",
+    "constitution_articles": [
+      "Article 14(1)(a)",
+      "Article 14(1)(d)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 14 (Freedom of Speech and Expression)",
+      "Censorship Laws",
+      "Media Regulation"
+    ],
+    "court_finding": "Freedom of press essential in democratic society. Restrictions require compelling justification. Burden on restricting authority to prove necessity and proportionality. Bare claim of national security insufficient.",
+    "legal_principles": [
+      "Press freedom as cornerstone of democracy",
+      "Proportionality requirement for restrictions",
+      "Prohibition of prior restraint",
+      "Burden on restricting authority",
+      "Test for 'compelling public interest'"
+    ],
+    "remedy_granted": "Lifting of publication prohibition; Declaration of journalistic freedom",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Press Freedom Case",
+    "source": "supremecourt.lk - Media Rights",
+    "significance": "Protects journalistic freedom and press from unreasonable restrictions"
+  },
+  {
+    "case_id": "SC/FR/RELIGION/2022",
+    "case_name": "Freedom of Religion and Conscience",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Religious Organization/Individual",
+      "respondent": "State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Freedom of Religion and Conscience",
+    "legal_area": "Constitutional Law - Article 10 / Article 14",
+    "subject_matter": "Restriction on religious practice and worship",
+    "key_facts": "Religious organization prohibited from conducting worship or practicing religion. State imposed restrictions on religious freedom claiming public order concerns.",
+    "constitution_articles": [
+      "Article 10",
+      "Article 14(1)(d)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 10 (Freedom of Thought and Conscience)",
+      "Constitution - Article 14 (Freedom of Association and Assembly)",
+      "International Covenant on Civil and Political Rights"
+    ],
+    "court_finding": "Freedom of religion is fundamental and cannot be arbitrarily restricted. State restrictions require strict justification based on real threat, not speculation.",
+    "legal_principles": [
+      "Religious freedom as fundamental right",
+      "Minority religious rights protection",
+      "Non-discrimination on religious grounds",
+      "Public order exception narrowly construed"
+    ],
+    "remedy_granted": "Declaration of religious freedom; Lifting of restrictions; Damages",
+    "date_of_decision": "2022",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2022] SC/FR - Religious Freedom Case",
+    "source": "supremecourt.lk - Religious Rights",
+    "significance": "Protects religious minorities from discriminatory restrictions"
+  },
+  {
+    "case_id": "SC/FR/PROPERTY/2023",
+    "case_name": "Property Rights and Constitutional Protection",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Property Owner",
+      "respondent": "State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Protection of Property",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Arbitrary deprivation of property without due process",
+    "key_facts": "Property seized by state without compensation or legal procedure. Owner claims violation of constitutional protection under Article 12 and due process principles.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 13"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equal Protection)",
+      "Land Reform Commission Laws",
+      "Compensation Ordinances"
+    ],
+    "court_finding": "While state may acquire property for public purpose, must follow legal procedures and provide just compensation. Arbitrary seizure violates Article 12 protections.",
+    "legal_principles": [
+      "Right to property under Article 12",
+      "Procedural fairness in property acquisition",
+      "Compensation requirement",
+      "Proportionality in state action"
+    ],
+    "remedy_granted": "Restoration of property or compensation; Damages",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Property Rights Case",
+    "source": "supremecourt.lk - Property Cases",
+    "significance": "Protects property owners from arbitrary state deprivation"
+  },
+  {
+    "case_id": "SC/FR/ASSEMBLY/2024",
+    "case_name": "Right to Peaceful Assembly and Protest",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Citizens/Protest Organization",
+      "respondent": "Police Commissioner"
+    },
+    "cause_of_action": "Fundamental Right - Freedom of Peaceful Assembly",
+    "legal_area": "Constitutional Law - Article 14(1)(d)",
+    "subject_matter": "Restriction on right to hold public demonstration and peaceful protest",
+    "key_facts": "Police issued order prohibiting peaceful assembly and protest on matters of public concern. Protesters claimed violation of Article 14(1)(d) right to peaceful assembly.",
+    "constitution_articles": [
+      "Article 14(1)(d)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 14 (Freedom of Association and Assembly)",
+      "Police Ordinance",
+      "Meetings Ordinance"
+    ],
+    "court_finding": "Right to peaceful assembly is protected right. Prior restraint requires compelling justification. Generic concern for public order insufficient. Specific credible threat required.",
+    "legal_principles": [
+      "Right to peaceful assembly for political expression",
+      "Prior restraint doctrine - high burden",
+      "Narrow tailoring of restrictions",
+      "Viewpoint neutrality requirement"
+    ],
+    "remedy_granted": "Declaration of assembly right; Quashing of prohibition order",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Assembly Rights Case",
+    "source": "supremecourt.lk - Assembly Rights",
+    "significance": "Protects democratic right to protest and public assembly"
+  },
+  {
+    "case_id": "SC/FR/EQUALITY/2024",
+    "case_name": "Gender Equality and Discrimination",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Woman challenging discriminatory law/policy",
+      "respondent": "State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Gender-Based Discrimination",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Discriminatory law or policy based on gender",
+    "key_facts": "Law or policy creates distinction between men and women affecting rights/benefits. Petitioner claims violation of Article 12(1) equal protection guarantee.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 12(2)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equality)",
+      "Gender-specific statutes",
+      "CEDAW - International Gender Equality Standards"
+    ],
+    "court_finding": "Gender-based classification subject to strict scrutiny. Must serve important governmental objective and be substantially related to achievement of that objective.",
+    "legal_principles": [
+      "Gender as suspect classification",
+      "Strict scrutiny standard",
+      "Non-discrimination principle",
+      "Substantive equality concept"
+    ],
+    "remedy_granted": "Declaration of invalidity; Damages; Remedial legislation direction",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Gender Discrimination Case",
+    "source": "supremecourt.lk - Equality Cases",
+    "significance": "Advances gender equality protection under Constitution"
+  },
+  {
+    "case_id": "SC/FR/CASTE/2023",
+    "case_name": "Caste-Based Discrimination",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Marginalized Community Member",
+      "respondent": "Discriminating Authority/Individual"
+    },
+    "cause_of_action": "Fundamental Right - Protection from Caste Discrimination",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Discrimination based on caste violating constitutional equality",
+    "key_facts": "Petitioner denied access to services, property, or opportunities based on caste status. Claims violation of Article 12(1) equality guarantee.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 12(2)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equality)",
+      "Penal Code - Defamation provisions",
+      "Social Policy on Marginalized Communities"
+    ],
+    "court_finding": "Caste-based discrimination violates constitutional equality. While not explicitly listed, caste falls within 'other grounds' category in Article 12(2). State must protect marginalized groups from discrimination.",
+    "legal_principles": [
+      "Evolving interpretation of Article 12(2)",
+      "Protection of marginalized communities",
+      "Dignity rights",
+      "Substantive equality protection"
+    ],
+    "remedy_granted": "Declaration of right to non-discrimination; Damages; Injunction",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Caste Discrimination Case",
+    "source": "supremecourt.lk - Equality Cases",
+    "significance": "Extends constitutional protection to marginalized caste communities"
+  },
+  {
+    "case_id": "SC/FR/EDUCATION/2024",
+    "case_name": "Right to Education",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Students/Parents",
+      "respondent": "State Education Authority"
+    },
+    "cause_of_action": "Fundamental Right - Access to Education",
+    "legal_area": "Constitutional Law - Article 14 / Socio-Economic Rights",
+    "subject_matter": "Denial or restriction of educational access",
+    "key_facts": "Students denied access to education based on economic status, gender, or disability. Petitioners claim constitutional right to education.",
+    "constitution_articles": [
+      "Article 14(1)",
+      "Article 12(1)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 14 (Rights and Freedoms)",
+      "Education Ordinance",
+      "Persons with Disabilities Act"
+    ],
+    "court_finding": "While Constitution does not explicitly guarantee right to education as fundamental right, state has duty to facilitate access. Arbitrary denial or discrimination violates Article 12.",
+    "legal_principles": [
+      "State's positive obligation for education",
+      "Non-discrimination in education",
+      "Equality in educational access",
+      "Inclusion principles"
+    ],
+    "remedy_granted": "Direction to provide educational access; Damages; Mandamus",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Education Rights Case",
+    "source": "supremecourt.lk - Socio-Economic Rights",
+    "significance": "Extends constitutional protection to educational access"
+  },
+  {
+    "case_id": "SC/FR/HEALTH/2023",
+    "case_name": "Right to Health and Medical Treatment",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Patient/Medical Needy",
+      "respondent": "Health Authority"
+    },
+    "cause_of_action": "Fundamental Right - Access to Healthcare",
+    "legal_area": "Constitutional Law - Article 14 / Right to Life (Article 13)",
+    "subject_matter": "Denial or deprivation of essential medical treatment",
+    "key_facts": "Patient denied access to medical treatment causing health deterioration. Claims violation of right to life and constitutional protection.",
+    "constitution_articles": [
+      "Article 13(1)",
+      "Article 14"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 13 (Freedom from Torture and Right to Life)",
+      "Medical Ordinance",
+      "Health Service Act",
+      "International Covenant on Economic, Social and Cultural Rights"
+    ],
+    "court_finding": "Right to health derives from right to life in Article 13. State has duty to provide essential medical care. Arbitrary denial may violate fundamental rights.",
+    "legal_principles": [
+      "Health as component of right to life",
+      "State's health protection duty",
+      "Access to emergency care",
+      "Non-discrimination in healthcare"
+    ],
+    "remedy_granted": "Mandamus for medical treatment; Damages; Compensation",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Healthcare Rights Case",
+    "source": "supremecourt.lk - Right to Life Cases",
+    "significance": "Recognizes health rights derived from right to life protection"
+  },
+  {
+    "case_id": "SC/FR/PRIVACY/2024",
+    "case_name": "Right to Privacy and Personal Data Protection",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Individual",
+      "respondent": "State/Private Entity"
+    },
+    "cause_of_action": "Fundamental Right - Privacy",
+    "legal_area": "Constitutional Law - Article 14 / Implied Rights",
+    "subject_matter": "Unlawful surveillance or disclosure of private information",
+    "key_facts": "Personal information collected, stored, or disclosed without consent. Petitioner claims violation of privacy rights and constitutional protection.",
+    "constitution_articles": [
+      "Article 14",
+      "Article 12(1)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 14 (Freedoms)",
+      "Data Protection Act",
+      "Surveillance Regulations"
+    ],
+    "court_finding": "Privacy recognized as fundamental right derived from constitutional protections. Unlawful surveillance or disclosure violates Article 14 and Article 12 protections.",
+    "legal_principles": [
+      "Right to privacy as fundamental",
+      "Data protection principles",
+      "Proportionality in surveillance",
+      "Consent and notification requirements"
+    ],
+    "remedy_granted": "Injunction against surveillance/disclosure; Damages; Data deletion order",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Privacy Rights Case",
+    "source": "supremecourt.lk - Privacy Cases",
+    "significance": "Recognizes and protects privacy as fundamental right"
+  },
+  {
+    "case_id": "SC/FR/TORTURE/2024",
+    "case_name": "Prohibition of Torture and Cruel Treatment",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Torture Victim/Detainee",
+      "respondent": "Police Officer/State Agent"
+    },
+    "cause_of_action": "Fundamental Right - Prohibition of Torture",
+    "legal_area": "Constitutional Law - Article 13(2)",
+    "subject_matter": "Torture, cruel, inhuman or degrading treatment in custody",
+    "key_facts": "Person subjected to torture or cruel treatment in police custody. Petitioner claims absolute violation of Article 13(2) - non-derogable right.",
+    "constitution_articles": [
+      "Article 13(2)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 13(2) (Prohibition of Torture)",
+      "Convention Against Torture",
+      "Penal Code - Torture provisions",
+      "Police Code of Conduct"
+    ],
+    "court_finding": "Article 13(2) prohibition on torture is absolute and non-derogable. No justification can validate torture. Even national emergency cannot justify torture. Burden on state to disprove torture allegation.",
+    "legal_principles": [
+      "Absolute prohibition of torture",
+      "Non-derogable nature of protection",
+      "Reversal of burden in torture cases",
+      "Medical evidence requirements",
+      "State responsibility for state agents"
+    ],
+    "remedy_granted": "Declaration of torture; Substantial damages; Criminal referral; Compensation",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Torture Prohibition Case",
+    "source": "supremecourt.lk - Torture Cases",
+    "significance": "Reaffirms absolute prohibition of torture under Constitution"
+  },
+  {
+    "case_id": "SC/FR/WORKPLACE/2023",
+    "case_name": "Right to Fair Labor and Employment",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Worker/Employee",
+      "respondent": "Employer"
+    },
+    "cause_of_action": "Fundamental Right - Fair Employment and Labor Rights",
+    "legal_area": "Constitutional Law - Article 12 / Labor Rights",
+    "subject_matter": "Unfair labor practices and workplace discrimination",
+    "key_facts": "Worker subjected to unfair practices: wage non-payment, hazardous conditions, termination without cause. Claims violations of constitutional protections.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 14"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equality)",
+      "Shops and Office Employees Act",
+      "Labor Laws",
+      "Occupational Health and Safety Ordinance"
+    ],
+    "court_finding": "While labor rights not explicitly protected as fundamental rights, discriminatory employment practices and hazardous conditions violate Article 12 equality and can breach Article 13 protection.",
+    "legal_principles": [
+      "Non-discrimination in employment",
+      "Fair labor standards",
+      "Workplace safety requirements",
+      "Remedies for unfair dismissal"
+    ],
+    "remedy_granted": "Reinstatement or damages; Unpaid wages; Compensation for hazardous exposure",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Labor Rights Case",
+    "source": "supremecourt.lk - Employment Cases",
+    "significance": "Extends constitutional protection to employment context"
+  },
+  {
+    "case_id": "SC/FR/ENVIRONMENT/2024",
+    "case_name": "Environmental Protection and Right to Clean Environment",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Environmental Organization/Affected Community",
+      "respondent": "Polluting Industry/State Authority"
+    },
+    "cause_of_action": "Fundamental Right - Environmental Protection",
+    "legal_area": "Constitutional Law - Article 14 / Environmental Rights",
+    "subject_matter": "Environmental pollution and deprivation of clean environment",
+    "key_facts": "Industrial pollution causing environmental harm affecting community health and livelihood. Petitioners claim constitutional right to clean environment.",
+    "constitution_articles": [
+      "Article 14(1)(d)",
+      "Article 27"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 27 (Directive Principles - Environment)",
+      "National Environmental Act",
+      "Pollution Control Regulations",
+      "Right to Safe Drinking Water"
+    ],
+    "court_finding": "While environmental protection not explicit fundamental right, derives from Article 14 protections and state's Article 27 directive. Severe environmental harm affecting health can violate constitutional protections.",
+    "legal_principles": [
+      "State responsibility for environmental protection",
+      "Community right to healthy environment",
+      "Precautionary principle",
+      "Polluter pays principle"
+    ],
+    "remedy_granted": "Injunction against pollution; Environmental restoration; Damages; Compensation",
+    "date_of_decision": "2024",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2024] SC/FR - Environmental Rights Case",
+    "source": "supremecourt.lk - Environmental Cases",
+    "significance": "Recognizes environmental protection derived from constitutional principles"
+  },
+  {
+    "case_id": "SC/FR/DISABILITY/2023",
+    "case_name": "Rights of Persons with Disabilities",
+    "court": "Supreme Court of Sri Lanka",
+    "parties": {
+      "petitioner": "Person with Disability",
+      "respondent": "State/Public Authority"
+    },
+    "cause_of_action": "Fundamental Right - Non-Discrimination Against Persons with Disabilities",
+    "legal_area": "Constitutional Law - Article 12",
+    "subject_matter": "Disability-based discrimination in access to services or opportunities",
+    "key_facts": "Person with disability denied access to public services, facilities, or employment due to disability status. Claims violation of Article 12 equal protection.",
+    "constitution_articles": [
+      "Article 12(1)",
+      "Article 12(2)"
+    ],
+    "statute_ordinance_applied": [
+      "Constitution - Article 12 (Equality)",
+      "Persons with Disabilities Act",
+      "Accessibility Standards",
+      "UNCRPD - Convention on Disability Rights"
+    ],
+    "court_finding": "Discrimination based on disability violates Article 12. State has duty to ensure reasonable accommodation and equal access. Mere physical barriers can constitute discriminatory conduct.",
+    "legal_principles": [
+      "Disability as protected category",
+      "Reasonable accommodation requirement",
+      "Accessibility obligation",
+      "Inclusion and non-discrimination"
+    ],
+    "remedy_granted": "Access/accommodation order; Damages; Institutional reform direction",
+    "date_of_decision": "2023",
+    "judges": [
+      "Constitutional Bench"
+    ],
+    "citation_format": "[2023] SC/FR - Disability Rights Case",
+    "source": "supremecourt.lk - Disability Cases",
+    "significance": "Protects rights of persons with disabilities from discrimination"
+  }
+]

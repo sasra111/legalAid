@@ -128,6 +128,15 @@ const Calendar: React.FC = () => {
     fetchEvents();
   }, [fetchEvents]);
 
+  // Get upcoming events from today onwards (top 5)
+  const getUpcomingEvents = () => {
+    const todayStr = today.toISOString().split('T')[0];
+    return events
+      .filter(event => event.date >= todayStr)
+      .sort((a, b) => a.date.localeCompare(b.date))
+      .slice(0, 5);
+  };
+
   const daysInMonth = getDaysInMonth(currentYear, currentMonth);
   const firstDayOfWeek = getFirstDayOfWeek(currentYear, currentMonth);
 
@@ -192,6 +201,48 @@ const Calendar: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      {/* Upcoming Events Section */}
+      <div className="mb-6 bg-blue-50 rounded-lg p-4 border border-blue-200">
+        <h3 className="text-lg font-semibold text-blue-800 mb-3">
+          Upcoming Events
+        </h3>
+        {getUpcomingEvents().length === 0 ? (
+          <p className="text-gray-500 text-sm">No upcoming events scheduled.</p>
+        ) : (
+          <ul className="space-y-2">
+            {getUpcomingEvents().map((event) => (
+              <li
+                key={event.id}
+                className="bg-white rounded-md p-3 border border-blue-100 flex justify-between items-start hover:bg-blue-50 transition-colors cursor-pointer"
+                onClick={() => {
+                  const [year, month, day] = event.date.split('-');
+                  setCurrentMonth(parseInt(month) - 1);
+                  setCurrentYear(parseInt(year));
+                  setSelectedDate(event.date);
+                }}
+              >
+                <div className="flex-1">
+                  <p className="font-semibold text-blue-900">{event.title}</p>
+                  {event.description && (
+                    <p className="text-sm text-gray-600 mt-1">
+                      {event.description}
+                    </p>
+                  )}
+                </div>
+                <span className="text-xs text-gray-500 whitespace-nowrap ml-3">
+                  {new Date(event.date).toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       <div className="grid grid-cols-7 gap-2 mb-2">
         {weekdays.map((day) => (
           <div key={day} className="text-center font-semibold text-blue-700">

@@ -19,7 +19,7 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/clients", require("./routes/clientRoutes"));
 app.use("/api/events", require("./routes/eventRoutes"));
 app.use("/api/settings", require("./routes/settingsRoutes"));
-
+app.use("/api/feedback", require("./routes/feedbackRoutes"));
 app.get("/", (req, res) => {
   res.send("Backend is running");
 });

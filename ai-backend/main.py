@@ -10,6 +10,7 @@ from utils.preprocess import extract_pdf_text, clean_legal_text, chunk_sentences
 from utils.db_schema import get_new_document_id, store_document_record
 from utils.embeddings import process_and_store, sent_tokenize
 from utils.cbr import compute_cbr_similarity
+from utils.cbr_constitution import constitutional_cbr
 
 EMBEDDINGS, CHUNKS, METADATA = None, [], []
 
@@ -42,18 +43,26 @@ class SearchResponse(BaseModel):
 class NewCase(BaseModel):
     cause_of_action: str
     subject_matter: str
-    statute_ordinance_applied: list
     key_facts: str
 
 with open("casebase/contract_cases.json", "r") as f:
     CASE_BASE = json.load(f)
 
+with open("casebase/constitutional_cases.json", "r") as f:
+    CONST_CASE_BASE = json.load(f)
+
 CASE_VECTORS = []
 for case in CASE_BASE:
     vector = model.encode([case["key_facts"]], convert_to_numpy=True).flatten()
     CASE_VECTORS.append(vector)
-
 CASE_VECTORS = np.vstack(CASE_VECTORS) 
+
+CONST_CASE_VECTORS = []
+for case in CONST_CASE_BASE:
+    vec = model.encode([case["key_facts"]], convert_to_numpy=True).flatten()
+    CONST_CASE_VECTORS.append(vec)
+CONST_CASE_VECTORS = np.vstack(CONST_CASE_VECTORS)
+
 
 @app.on_event("startup")
 def load_embeddings():
@@ -168,4 +177,9 @@ async def upload_document(file: UploadFile = File(...)):
 @app.post("/findSimilarCases")
 def find_similar_cases(new_case: NewCase, top_k: int = 5):
     result = compute_cbr_similarity(new_case.dict(), CASE_BASE, CASE_VECTORS, top_k)
+    return result
+
+@app.post("/findSimilarConstitutionalCases")
+def find_const_cases(new_case: NewCase, top_k: int = 5):
+    result = constitutional_cbr(new_case.dict(), CONST_CASE_BASE, CONST_CASE_VECTORS, top_k)
     return result

@@ -17,12 +17,12 @@ import {
 } from "lucide-react";
 
 const features = [
-  {
-    icon: <FileText className="h-8 w-8 text-blue-600" />,
-    title: "Legal Intake",
-    description:
-      "Collect and organize client and case data automatically for efficient onboarding.",
-  },
+  // {
+  //   icon: <FileText className="h-8 w-8 text-blue-600" />,
+  //   title: "Legal Intake",
+  //   description:
+  //     "Collect and organize client and case data automatically for efficient onboarding.",
+  // },
   {
     icon: <MessageCircle className="h-8 w-8 text-blue-600" />,
     title: "Consultation Scheduling",
@@ -41,12 +41,12 @@ const features = [
     description:
       "Track upcoming dates, deadlines, and case events in one place.",
   },
-  {
-    icon: <Briefcase className="h-8 w-8 text-blue-600" />,
-    title: "Case Tracker & Management",
-    description:
-      "Timeline for each case, including documents, notes, and assigned lawyers.",
-  },
+  // {
+  //   icon: <Briefcase className="h-8 w-8 text-blue-600" />,
+  //   title: "Case Tracker & Management",
+  //   description:
+  //     "Timeline for each case, including documents, notes, and assigned lawyers.",
+  // },
 ];
 
 const howItWorks = [

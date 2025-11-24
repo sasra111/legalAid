@@ -19,16 +19,16 @@ const navigationItems = [
   },
   {
     id: "cases",
-    label: "Cases",
+    label: "Past Cases",
     icon: <Briefcase className="h-5 w-5" />,
     path: "/lawyer-dashboard/lawyer/cases",
   },
-  {
-    id: "documents",
-    label: "Documents",
-    icon: <FileText className="h-5 w-5" />,
-    path: "/lawyer-dashboard/lawyer/documents",
-  },
+  // {
+  //   id: "documents",
+  //   label: "Documents",
+  //   icon: <FileText className="h-5 w-5" />,
+  //   path: "/lawyer-dashboard/lawyer/documents",
+  // },
   {
     id: "search",
     label: "Legal Search",
@@ -36,16 +36,16 @@ const navigationItems = [
     path: "/lawyer-dashboard/lawyer/search",
   },
   {
-    id: "clients",
-    label: "Clients",
-    icon: <Users className="h-5 w-5" />,
-    path: "/lawyer-dashboard/lawyer/clients",
-  },
-  {
     id: "calendar",
     label: "Calendar",
     icon: <Calendar className="h-5 w-5" />,
     path: "/lawyer-dashboard/lawyer/calendar",
+  },
+  {
+    id: "clients",
+    label: "Clients",
+    icon: <Users className="h-5 w-5" />,
+    path: "/lawyer-dashboard/lawyer/clients",
   },
   // {
   //   id: "billing",
@@ -53,12 +53,12 @@ const navigationItems = [
   //   icon: <DollarSign className="h-5 w-5" />,
   //   path: "/lawyer-dashboard/lawyer/billing",
   // },
-  {
-    id: "settings",
-    label: "Settings",
-    icon: <Settings className="h-5 w-5" />,
-    path: "/lawyer-dashboard/lawyer/settings",
-  },
+  // {
+  //   id: "settings",
+  //   label: "Settings",
+  //   icon: <Settings className="h-5 w-5" />,
+  //   path: "/lawyer-dashboard/lawyer/settings",
+  // },
 ];
 
 import { useLocation, useNavigate } from "react-router-dom";
