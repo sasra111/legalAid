@@ -1,0 +1,56 @@
+// import React from "react";
+import {
+  BarChart3,
+} from "lucide-react";
+
+const navigationItems = [
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    icon: <BarChart3 className="h-5 w-5" />,
+    path: "/admin-dashboard",
+  },
+  {
+    id: "feedback",
+    label: "Feedback",
+    icon: <BarChart3 className="h-5 w-5" />,
+    path: "/admin-dashboard/feedback",
+  }
+];
+
+import { useLocation, useNavigate } from "react-router-dom";
+
+const SIDEBAR_WIDTH = 256; // 64 * 4 (w-64 in Tailwind = 16rem = 256px)
+
+const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  return (
+    <aside
+      className="sticky top-0 left-0 h-[calc(100vh-4rem)] w-64 bg-white border-r shadow-sm flex flex-col z-10 hidden md:flex"
+      style={{ minHeight: "calc(100vh - 4rem)", width: SIDEBAR_WIDTH }}
+    >
+      <div className="p-6 text-2xl font-bold text-blue-800 border-b">
+        Admin Panel
+      </div>
+      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+        {navigationItems.map((item) => (
+          <button
+            key={item.id}
+            className={`w-full flex items-center gap-3 px-4 py-2 rounded-lg text-left transition-colors duration-150 ${
+              location.pathname === item.path
+                ? "bg-blue-100 text-blue-800 font-semibold"
+                : "hover:bg-blue-50 text-gray-700"
+            }`}
+            onClick={() => navigate(item.path)}
+          >
+            {item.icon}
+            {item.label}
+          </button>
+        ))}
+      </nav>
+    </aside>
+  );
+};
+
+export default Sidebar;

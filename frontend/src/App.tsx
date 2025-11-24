@@ -14,6 +14,8 @@ import Calendar from "./components/lawyer_dashboard/Calendar";
 import LegalSearch from "@/components/lawyer_dashboard/LegalSearch";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import SimilarCases from "./components/lawyer_dashboard/SimilarCases";
+import type Feedback from "./components/admin_dashboard/Feedback";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function App() {
   return (
@@ -68,6 +70,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            
             <Route
               path="clients"
               element={
@@ -95,7 +98,16 @@ function App() {
             />
           </Route>
           {/* Example: Add more protected routes for other dashboard sections if needed */}
+          <Route
+            path="/admin/*"
+            element={
+              <ProtectedRoute allowedRoles={["admin"]}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
+        
       </Layout>
     </Router>
   );
