@@ -116,28 +116,33 @@ def search_judgements(query: str = Query(...), top_k: int = 5):
     scores = util.cos_sim(query_emb, EMBEDDINGS)[0].cpu().numpy()
 
     # 2. Top chunk indices
-    top_idx = np.argsort(scores)[::-1][:top_k]
+    ranked_idx = np.argsort(scores)[::-1]
+
+    seen_docs = set()
+    results = []
 
     results = []
-    for i in top_idx:
-        # retrieve chunk metadata
-        meta = METADATA[i]  # contains document_id
-
-        # Fetch document information using document_id
+    for i in ranked_idx:
+        meta = METADATA[i]
         doc_id = meta.get("document_id", "")
-        doc_data = r_text.hgetall(f"document:{doc_id}")  # master table lookup
-        title = doc_data.get("document_name", "Unknown Document")
+        if doc_id not in seen_docs:   # 💡 Only pick first/best chunk per document
+            seen_docs.add(doc_id)
 
-        # prepare response
-        results.append(
-            SearchResult(
-                doc_id=doc_id,
-                chunk_id=meta.get("chunk_id", ""),
-                title=title,
-                chunk_text=CHUNKS[i],
-                score=float(scores[i]),
+            doc_data = r_text.hgetall(f"document:{doc_id}")
+            title = doc_data.get("document_name", "Unknown Document")
+
+            results.append(
+                SearchResult(
+                    doc_id=doc_id,
+                    chunk_id=meta.get("chunk_id", ""),
+                    title=title,
+                    chunk_text=CHUNKS[i],
+                    score=float(scores[i]),
+                )
             )
-        )
+
+        if len(results) == top_k:
+            break 
 
     return SearchResponse(
         query=query,

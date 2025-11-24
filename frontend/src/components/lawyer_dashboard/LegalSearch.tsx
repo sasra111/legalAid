@@ -45,6 +45,7 @@ const LegalSearch = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [topK, setTopK] = useState(5);
 
   const handleSearch = async () => {
     if (!query.trim()) {
@@ -61,7 +62,7 @@ const LegalSearch = () => {
         {
           params: {
             query: query.trim(),
-            top_k: 5,
+            top_k: topK,
           },
         }
       );
@@ -108,11 +109,10 @@ const LegalSearch = () => {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-blue-800">
-              Legal Case Search
+              Legal Search
             </h1>
             <p className="text-gray-600">
-              Search through legal judgements and case law using AI-powered
-              semantic search
+              Search through Statues using AI powered semantic search
             </p>
           </div>
         </div>
@@ -126,19 +126,28 @@ const LegalSearch = () => {
             Search Query
           </CardTitle>
           <CardDescription>
-            Enter keywords or phrases to search relevant legal cases
+            Enter keywords or phrases to search relevant statues
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex gap-3">
             <Input
               type="text"
-              placeholder="e.g., fundamental violation, breach of contract, negligence..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyPress={handleKeyPress}
               className="flex-1 h-12 text-base"
               disabled={isLoading}
+            />
+            <Input
+              type="number"
+              min="1"
+              max="10"
+              value={topK}
+              onChange={(e) => setTopK(parseInt(e.target.value) || 3)}
+              className="w-24 h-12 text-base"
+              disabled={isLoading}
+              placeholder="Results"
             />
             <Button
               onClick={handleSearch}
@@ -203,12 +212,12 @@ const LegalSearch = () => {
                     </p>
                   </div>
                 </div>
-                <div className="text-right">
+                {/* <div className="text-right">
                   <p className="text-sm text-gray-600">Total Chunks Searched</p>
                   <p className="text-xl font-semibold text-gray-700">
                     {searchResults.total_chunks}
                   </p>
-                </div>
+                </div> */}
               </div>
               <div className="mt-3 pt-3 border-t border-blue-200">
                 <p className="text-sm text-gray-600">
@@ -240,24 +249,22 @@ const LegalSearch = () => {
                             <FileText className="h-3 w-3 mr-1" />
                             {result.title}
                           </Badge>
-                          <Badge variant="outline" className="bg-gray-50">
+                          {/* <Badge variant="outline" className="bg-gray-50">
                             Doc ID: {result.doc_id}
-                          </Badge>
-                          <Badge variant="outline" className="bg-gray-50">
+                          </Badge> */}
+                          {/* <Badge variant="outline" className="bg-gray-50">
                             Chunk: {result.chunk_id}
-                          </Badge>
+                          </Badge> */}
                         </div>
-                        <CardTitle className="text-xl">
-                          Result #{index + 1}
-                        </CardTitle>
                       </div>
                       <div className="flex flex-col items-end gap-2">
                         <Badge
-                          className={`px-3 py-1 ${getScoreColor(result.score)}`}
+                          className={`px-3 py-1`}
                           variant="outline"
                         >
-                          Relevance: {formatScore(result.score)}
+                          Result: {index + 1}
                         </Badge>
+                    
                         <Button
                           variant="ghost"
                           size="sm"
